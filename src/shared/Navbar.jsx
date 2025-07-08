@@ -102,7 +102,7 @@ const Navbar = () => {
 
           {/* Sign In Button */}
           <div className="flex lg:order-2 space-x-3 items-center lg:space-x-0 rtl:space-x-reverse">
-            <Link >
+            <Link to='/sign-in' >
               <a className="relative inline-block text-lg group">
                 <span className="relative z-10 block md:px-5 px-3 py-2 md:py-2 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-secondary rounded-lg group-hover:text-primary">
                   <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>

@@ -4,6 +4,7 @@ import HomePage from "../pages/Home/HomePage";
 import AllTrainer from "../pages/AllTrainer/AllTrainer";
 import AllClasses from "../pages/AllClasses/AllClasses";
 import Forums from "../pages/Forums/Forums";
+import SignIn from "../pages/AuthPages/SignIn";
  
 export const router = createBrowserRouter([
     {
@@ -28,5 +29,9 @@ export const router = createBrowserRouter([
             }
         ]
         
+    },
+    {
+        path: 'sign-in',
+        Component: SignIn
     }
 ])
