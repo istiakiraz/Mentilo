@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@theme {
+  --color-primary: #432365;
+  --color-secondary: #e5dbf3;
+  --color-minor: #1f102f;
+
+  --font-title: "Cal Sans", sans-serif;
+  --font-logo: "Shrikhand", serif;
+
+}
+
+body{
+  font-family: "Schibsted Grotesk", sans-serif;
+}
