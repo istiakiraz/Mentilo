@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import logo from "../assets/logo/mentiloTitleLogo.png";
-import { Link } from "react-router"; 
+import { Link, NavLink } from "react-router"; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); 
@@ -11,23 +11,103 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+
+        const links = (
+            <>
+
+                <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? " bg-primary px-3     "
+            : " group relative px-3"
+        }
+        to="/"
+      >
+        <li className="flex gap-1 items-center relative overflow-hidden">
+          {" "}
+           <span className="relative z-10">Home</span>
+           <span className="absolute left-0 bottom-0 w-full h-0.5 bg-secondary scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+        </li>
+      </NavLink>
+                <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? " bg-primary px-3   "
+            : " group relative px-3"
+        }
+        to="/all-trainer"
+      >
+        <li className="flex gap-1 items-center relative overflow-hidden">
+          {" "}
+           <span className="relative z-10">Trainer</span>
+           <span className="absolute left-0 bottom-0 w-full h-0.5 bg-secondary  scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+        </li>
+      </NavLink>
+                <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? " bg-primary px-3   "
+            : " group relative px-3"
+        }
+        to="/all-classes"
+      >
+        <li className="flex gap-1 items-center relative overflow-hidden">
+          {" "}
+           <span className="relative z-10">Classes</span>
+           <span className="absolute left-0 bottom-0 w-full h-0.5 bg-secondary  scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+        </li>
+      </NavLink>
+                <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? " bg-primary px-3   "
+            : " group relative px-3"
+        }
+        to="/forums"
+      >
+        <li className="flex gap-1 items-center relative overflow-hidden">
+          {" "}
+           <span className="relative z-10">Forums</span>
+           <span className="absolute left-0 bottom-0 w-full h-0.5 bg-secondary  scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+        </li>
+      </NavLink>
+                <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? " bg-primary px-3   "
+            : " group relative px-3"
+        }
+        to="/forums"
+      >
+        <li className="flex gap-1 items-center relative overflow-hidden">
+          {" "}
+           <span className="relative z-10">Dashboard</span>
+           <span className="absolute left-0 bottom-0 w-full h-0.5 bg-secondary  scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+        </li>
+      </NavLink>
+                
+             
+            
+            </>
+        )
+
   return (
     <>
-      <nav className="bg-minor w-full z-20 mb-5 top-0 start-0">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between py-7 mx-auto p-4">
+      <nav className="bg-minor  w-full z-20 sticky top-0 start-0">
+        <div className="max-w-screen-xl flex flex-wrap items-center justify-between lg:py-7 mx-auto p-4">
           {/* Logo */}
-          <a className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img className="w-40" src={logo} alt="Logo" />
-          </a>
+          <Link to='/' className="flex items-center space-x-3 rtl:space-x-reverse">
+            <img className="lg:w-40 w-32" src={logo} alt="Logo" />
+          </Link>
 
           {/* Sign In Button */}
           <div className="flex lg:order-2 space-x-3 items-center lg:space-x-0 rtl:space-x-reverse">
-            <Link to="/login">
+            <Link >
               <a className="relative inline-block text-lg group">
                 <span className="relative z-10 block md:px-5 px-3 py-2 md:py-2 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-secondary rounded-lg group-hover:text-primary">
                   <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
                   <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-secondary group-hover:-rotate-180 ease"></span>
-                  <span className="relative">Sign In</span>
+                  <span className="relative text-sm md:text-[16px] ">Sign In</span>
                 </span>
                 <span className="absolute bottom-0 right-0 w-full h-10 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-secondary rounded-lg group-hover:mb-0 group-hover:mr-0" />
               </a>
@@ -68,12 +148,10 @@ const Navbar = () => {
     ${isOpen ? "max-h-[500px]" : "max-h-0"} 
     lg:max-h-full lg:flex lg:w-auto lg:order-1`}
           >
-            <ul className="flex flex-col p-4 *:md:py-2 lg:p-0 mt-4 font-medium border border-gray-100 rounded-lg lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 *:text-white">
-              <li>Home</li>
-              <li>Trainer</li>
-              <li>Classes</li>
-              <li>Forums</li>
-              <li>Dashboard</li>
+            <ul className="flex flex-col p-4 *:py-2 lg:p-0 mt-4 font-medium border border-gray-100 rounded-lg lg:space-x-8 rtl:space-x-reverse lg:flex-row lg:mt-0 lg:border-0 *:text-white">
+             {
+                links
+             }
               
             </ul>
           </div>
