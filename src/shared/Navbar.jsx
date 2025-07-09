@@ -2,8 +2,22 @@ import React, { useState } from "react";
 import logo from "../assets/logo/mentiloTitleLogo.png";
 import { Link, NavLink } from "react-router";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+
+   const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+
   const [isOpen, setIsOpen] = useState(false);
   const {user, signOutUser  } = useAuth()
   const toggleDrawer = () => {
@@ -14,6 +28,13 @@ const Navbar = () => {
     
     signOutUser()
     .then(()=>{
+
+      Toast.fire({
+          icon: "success",
+          title: `Sign Out successfully!`,
+          background: "#f9f6fc",
+          iconColor: "#432365"
+        });
 
     })
     .catch(error => {
@@ -77,7 +98,7 @@ const Navbar = () => {
         className={({ isActive }) =>
           isActive ? " bg-primary px-3   " : " group relative px-3"
         }
-        to="/forums"
+        to="/dashboard"
       >
         <li className="flex gap-1 items-center relative overflow-hidden">
           {" "}
