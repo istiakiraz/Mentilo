@@ -3,13 +3,68 @@ import logoGIF from "../../assets/animation/Login (1).gif";
 import logo from "../../assets/logo/MentiloLogo.png";
 import logo2 from "../../assets/logo/mentiloTitleLogo.png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { GoArrowLeft } from "react-icons/go";
 import GoogleLogIn from "./GoogleLogIn";
 import { FiLock, FiMail } from "react-icons/fi";
+import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+
+
   const [showPass, setShowPass] = useState(false);
+  const { register, handleSubmit,  formState: { errors }, } = useForm();
+  
+
+  const {signInUser,} = useAuth()
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+   const onSubmit = (data) => {
+    console.log(data);
+
+    signInUser(data.email, data.password)
+    .then(result=>{
+        console.log(result.user)
+         navigate(`${location.state ? location.state : "/"}`);
+
+         Swal.fire({
+          title: `🏃‍♂️ Time to Move with Mentilo!`,
+          text: "Let’s crush today’s goals!.",
+          icon: "success",
+          confirmButtonText: "Get Started",
+          iconColor: "#432365",
+          confirmButtonColor: "#432365",
+          background: "#f9f6fc",
+        });
+
+    })
+    .catch(error =>{
+        console.log(error);
+         Toast.fire({
+          icon: "error",
+           background: "#f9f6fc",
+          iconColor: "#432365",
+          title: "Incorrect email or password",
+          });
+    })
+
+  };
 
   return (
     <div className="grid grid-cols-1 bg-primary lg:bg-white h-screen lg:grid-cols-2 py-16 max-h-screen justify-center items-center  lg:pt-0  lg:pb-0">
@@ -52,45 +107,56 @@ const SignIn = () => {
             <p className="text-gray-500 text-center pb-7 font-semibold ">
               Welcome back! Please enter your details.
             </p>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)} >
               <div className="mb-1 sm:mb-2">
-                 {/* Email Input */}
-                     <div className="mb-4 relative">
-                       <FiMail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-                       <input
-                         placeholder="Email"
-                         required
-                         type="email"
-                         className="pl-10 flex-grow w-full h-12 px-4 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                         name="email"
-                       />
-                     </div>
-               
-                     {/* Password Input */}
-                     <div className="mb-4 relative">
-                       <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-                       <input
-                         placeholder="Password"
-                         required
-                         type={showPass ? "text" : "password"}
-                         className="pl-10 flex-grow w-full h-12 px-4 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
-                         name="password"
-                       />
-                          <button
-                                 type="button"
-                                 onClick={() => {
-                                   setShowPass(!showPass);
-                                 }}
-                                 className="btn btn-xs absolute top-3  right-6"
-                               >
-                                 {showPass ? (
-                                   <FaEyeSlash color="purple" size={22} />
-                                 ) : (
-                                   <FaEye color="purple" size={22} />
-                                 )}
-                               </button>
-                     </div>
-                     </div>
+
+                {/* Email Input */}
+                <div className="mb-4 relative">
+                  <FiMail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <input
+                    placeholder="Email"
+                   {...register("email" , { required: true })}
+                    type="email"
+                    className="pl-10 flex-grow w-full h-12 px-4 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                    name="email"
+                  />
+
+                    {errors.email?.type === "required" && (
+            <p className="text-red-700">Email is required</p>
+          )}
+
+                </div>
+
+                {/* Password Input */}
+                <div className="mb-4 relative">
+                  <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                  <input
+                    placeholder="Password"
+                      {...register("password" , { required: true })}
+                    type={showPass ? "text" : "password"}
+                    className="pl-10 flex-grow w-full h-12 px-4 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                    name="password"
+                  />
+
+                     {errors.password?.type === "required" && (
+            <p className="text-red-700">password is required</p>
+          )}
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowPass(!showPass);
+                    }}
+                    className="btn btn-xs absolute top-3  right-6"
+                  >
+                    {showPass ? (
+                      <FaEyeSlash color="purple" size={22} />
+                    ) : (
+                      <FaEye color="purple" size={22} />
+                    )}
+                  </button>
+                </div>
+              </div>
 
               <div
                 // onClick={handleForgotPass}
@@ -108,7 +174,9 @@ const SignIn = () => {
                 </button>
               </div>
 
-              <GoogleLogIn></GoogleLogIn>
+           
+            </form>
+               <GoogleLogIn></GoogleLogIn>
 
               <p className="text-center text-sm  mx-auto mb-2 flex gap-1 mt-2">
                 Don’t have an account yet?{" "}
@@ -119,7 +187,6 @@ const SignIn = () => {
                   Sign-Up
                 </Link>{" "}
               </p>
-            </form>
           </div>
         </div>
       </div>
