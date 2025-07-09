@@ -5,6 +5,7 @@ import AllTrainer from "../pages/AllTrainer/AllTrainer";
 import AllClasses from "../pages/AllClasses/AllClasses";
 import Forums from "../pages/Forums/Forums";
 import SignIn from "../pages/AuthPages/SignIn";
+import SignUp from "../pages/AuthPages/SignUp";
  
 export const router = createBrowserRouter([
     {
@@ -33,5 +34,9 @@ export const router = createBrowserRouter([
     {
         path: 'sign-in',
         Component: SignIn
+    },
+    {
+        path: 'sign-up',
+        Component : SignUp
     }
 ])
