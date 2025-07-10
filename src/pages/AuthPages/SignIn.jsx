@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
+
 const SignIn = () => {
 
   const Toast = Swal.mixin({
@@ -72,7 +73,7 @@ const SignIn = () => {
         <img
           className="w-[600px] relative  z-20 py-40 mx-40"
           src={logoGIF}
-          alt=""
+          alt="logo gif"
         />
       </div>
 
@@ -98,7 +99,7 @@ const SignIn = () => {
             <img className="w-16" src={logo} alt="" />
             <h2 className="text-4xl font-logo -ml-3 text-primary ">Mentilo</h2>
           </div>
-          <img className="lg:hidden mb-8 w-50 mx-auto " src={logo2} alt="" />
+          <img className="lg:hidden mb-8 w-50 mx-auto " src={logo2} alt="logo" />
 
           <div className="bg-white rounded-xl  shadow-2xl p-7 sm:p-10">
             <h3 className="mb-4 lg:text-4xl font-semibold text-center sm:mb-6 text-2xl">
