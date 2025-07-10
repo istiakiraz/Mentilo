@@ -2,6 +2,19 @@ import React, { useState } from "react";
 import { GoArrowLeft } from "react-icons/go";
 import { Link, NavLink, Outlet } from "react-router";
 import logo from "../assets/logo/mentiloTitleLogo.png";
+import {
+  FiUser,
+  FiBook,
+  FiActivity,
+  FiClock,
+  FiPlusCircle,
+  FiEdit3,
+  FiMail,
+  FiUserCheck,
+  FiDollarSign,
+  
+} from "react-icons/fi"; 
+import { FaCalendarPlus } from "react-icons/fa";
 
 const DashboardLayouts = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -79,104 +92,103 @@ const DashboardLayouts = () => {
         lg:translate-x-0`}
       >
         <div className="h-full px-3 pb-4 overflow-y-auto bg-primary flex flex-col justify-between">
-          <ul className="space-y-2 font-medium">
-            {/* user dash link */}
-            <li>
-              <NavLink
-                to="/dashboard"
-                onClick={closeDrawer}
-                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
-              >
-                Profile Page
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/booked-trainer"
-                onClick={closeDrawer}
-                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
-              >
-                Booked Trainer
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/activity-log"
-                onClick={closeDrawer}
-                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
-              >
-                Activity Log
-              </NavLink>
-            </li>
-            {/* ------ user------- */}
+         <ul className="space-y-2 font-medium">
+  {/* user dash link */}
+  <li>
+    <NavLink
+      to="/dashboard"
+      onClick={closeDrawer}
+      className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
+    >
+      <FiUser className="text-xl" /> Profile Page
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/dashboard/booked-trainer"
+      onClick={closeDrawer}
+      className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
+    >
+      <FiBook className="text-xl" /> Booked Trainer
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/dashboard/activity-log"
+      onClick={closeDrawer}
+      className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
+    >
+      <FiActivity className="text-xl" /> Activity Log
+    </NavLink>
+  </li>
 
-            {/* trainer dash link */}
-            <li>
-              <NavLink
-                to="/dashboard/manage-slots"
-                onClick={closeDrawer}
-                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
-              >
-                Manage Slots
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/add-new-slot"
-                onClick={closeDrawer}
-                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
-              >
-                Add New Slot
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/add-forum"
-                onClick={closeDrawer}
-                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
-              >
-                Add New Forum
-              </NavLink>
-            </li>
+  {/* trainer dash link */}
+  <li>
+    <NavLink
+      to="/dashboard/manage-slots"
+      onClick={closeDrawer}
+      className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
+    >
+      <FiClock className="text-xl" /> Manage Slots
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/dashboard/add-new-slot"
+      onClick={closeDrawer}
+      className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
+    >
+      <FiPlusCircle className="text-xl" /> Add New Slot
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/dashboard/add-forum"
+      onClick={closeDrawer}
+      className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
+    >
+      <FiEdit3 className="text-xl" /> Add New Forum
+    </NavLink>
+  </li>
 
-            {/* admin dash link */}
-            <li>
-              <NavLink
-                to="/dashboard/newsletter "
-                onClick={closeDrawer}
-                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
-              >
-                Newsletter
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/applied-trainer"
-                onClick={closeDrawer}
-                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
-              >
-                Applied Trainer
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/balance"
-                onClick={closeDrawer}
-                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
-              >
-                Balance
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/dashboard/add-class"
-                onClick={closeDrawer}
-                className="flex items-center p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
-              >
-                Add New Class
-              </NavLink>
-            </li>
-          </ul>
+  {/* admin dash link */}
+  <li>
+    <NavLink
+      to="/dashboard/newsletter"
+      onClick={closeDrawer}
+      className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
+    >
+      <FiMail className="text-xl" /> Newsletter
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/dashboard/applied-trainer"
+      onClick={closeDrawer}
+      className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
+    >
+      <FiUserCheck className="text-xl" /> Applied Trainer
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/dashboard/balance"
+      onClick={closeDrawer}
+      className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
+    >
+      <FiDollarSign className="text-xl" /> Balance
+    </NavLink>
+  </li>
+  <li>
+    <NavLink
+      to="/dashboard/add-class"
+      onClick={closeDrawer}
+      className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
+    >
+       <FaCalendarPlus className="text-xl" /> Add New Class
+    </NavLink>
+  </li>
+</ul>
 
           {/* ✅ Bottom Back Button */}
           <div className="mb-6">
