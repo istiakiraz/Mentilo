@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
 
             // admin routes
             {
-                path: 'newsletter ',
+                path: 'newsletter',
                 element: <Newsletter></Newsletter>
             } ,
             {

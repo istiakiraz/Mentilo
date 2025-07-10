@@ -10,6 +10,7 @@ import { FiLock, FiMail } from "react-icons/fi";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const SignIn = () => {
@@ -28,6 +29,7 @@ const SignIn = () => {
 
 
   const [showPass, setShowPass] = useState(false);
+  const axiosSecure = useAxiosSecure()
   const { register, handleSubmit,  formState: { errors }, } = useForm();
   
 
@@ -37,11 +39,23 @@ const SignIn = () => {
   const navigate = useNavigate();
 
    const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
 
     signInUser(data.email, data.password)
-    .then(result=>{
+    .then(async(result)=>{
         console.log(result.user)
+
+         const userInfo = {
+          email: data.email,
+          last_log_at : new Date().toISOString()
+        }
+
+        const userRes = await axiosSecure.post('/users', userInfo)
+
+        // console.log(userRes.data);
+
+        if(userRes.data.inserted === false ){
+          
          navigate(`${location.state ? location.state : "/"}`);
 
          Swal.fire({
@@ -53,6 +67,7 @@ const SignIn = () => {
           confirmButtonColor: "#432365",
           background: "#f9f6fc",
         });
+        }
 
     })
     .catch(error =>{

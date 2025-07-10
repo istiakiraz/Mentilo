@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const GoogleLogIn = () => {
 
@@ -21,6 +22,7 @@ const GoogleLogIn = () => {
  const {googleSignIn} = useAuth();
  const location = useLocation();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure()
 
     const handleGoogleSignIn = () =>{
         googleSignIn()
@@ -28,9 +30,27 @@ const GoogleLogIn = () => {
            const user =  result.user
            console.log(user);
 
-            navigate(`${location.state ? location.state : "/"}`);
 
-            
+          //update user profile in database 
+
+          const userInfo = {
+
+            name : user.displayName,
+            photo : user.photoURL,
+            email: user.email,
+            role: 'member', // default role
+          created_at : new Date().toISOString(),
+          last_log_at : new Date().toISOString()
+          }
+
+          
+
+          const userRes = await axiosSecure.post('/users', userInfo)
+
+          if(userRes.data.insertedId || userRes.data.inserted === false  ){
+
+             navigate(`${location.state ? location.state : "/"}`);
+
                      Swal.fire({
                       title: `🏃‍♂️ Time to Move with Mentilo!`,
                       text: "Let’s crush today’s goals!.",
@@ -42,20 +62,10 @@ const GoogleLogIn = () => {
                     });
 
 
-            //update user profile in database
+          }
 
-        // const userInfo = {
-        //   email: user.email,
-        //   role: 'user', // default role
-        //   created_at : new Date().toISOString(),
-        //   last_log_at : new Date().toISOString()
-        // }
 
-        //  const userRes = await axiosInstance.post('/users', userInfo)
 
-        //  console.log(userRes.data);
-
-        //      navigate(`${location.state ? location.state : "/"}`);
         }).catch(error =>{
             console.log(error);
                Toast.fire({

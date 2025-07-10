@@ -9,9 +9,11 @@ import { FiLock, FiMail, FiUser } from "react-icons/fi";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const SignUp = () => {
   const [showPass, setShowPass] = useState(false);
+  const axiosSecure = useAxiosSecure()
 
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
@@ -33,22 +35,22 @@ const SignUp = () => {
 
         //update user profile in database
 
-        // const userInfo = {
-        //   email: data.email,
-        //   role: 'user', // default role
-        //   created_at : new Date().toISOString(),
-        //   last_log_at : new Date().toISOString()
-        // }
+        const userInfo = {
+          email: data.email,
+          name: data.name,
+          photo: profilePic,
+          role: 'member', // default role
+          created_at : new Date().toISOString(),
+          last_log_at : new Date().toISOString()
+        }
 
 
-        // const userRes = await axiosInstance.post('/users', userInfo)
+        const userRes = await axiosSecure.post('/users', userInfo)
 
 
         // console.log(userRes.data);
-
-
-
-        // update user profile in firebase
+        if(userRes.data.insertedId){
+          // update user profile in firebase
         const userProfile = {
           displayName: data.name,
           photoURL: profilePic,
@@ -61,6 +63,8 @@ const SignUp = () => {
           .catch((error) => {
             console.log(error);
           });
+        };
+   
       })
       .catch((error) => {
         console.log(error);
@@ -135,7 +139,6 @@ const SignUp = () => {
                   <input
                     placeholder="Picture"
                     onChange={handleImgUpload}
-                    required
                     type="file"
                     className="file:mr-4 file:rounded-full file:border-0 file:bg-violet-50 file:px-4 file:py-2 file:text-sm file:font-semibold  hover:file:bg-violet-100 file:text-primary  flex-grow w-full h-12 px-4 transition duration-200 bg-white  rounded  appearance-none focus:border-deep-purple-accent-400   "
                   />
