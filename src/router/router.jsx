@@ -17,6 +17,7 @@ import Newsletter from "../pages/Dashboard/Admin/Newsletter";
 import AppliedTrainer from "../pages/Dashboard/Admin/AppliedTrainer";
 import Balance from "../pages/Dashboard/Admin/Balance";
 import AddClass from "../pages/Dashboard/Admin/AddClass";
+import BeATrainer from "../pages/BeATrainer/BeATrainer";
  
 export const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
             {
                 path: 'forums',
                 Component: Forums
+            },
+            {
+                path: 'be-a-trainer',
+                element: <BeATrainer></BeATrainer>
             }
         ]
         

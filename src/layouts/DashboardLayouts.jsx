@@ -74,7 +74,7 @@ const DashboardLayouts = () => {
 
               <Link
                 to="/dashboard"
-                className="self-center ms-3 text-xl lg:text-2xl font-semibold whitespace-nowrap text-white"
+                className="self-center  ms-3 text-xl lg:text-2xl font-semibold whitespace-nowrap text-white"
               >
                 Dashboard
               </Link>
@@ -197,7 +197,7 @@ const DashboardLayouts = () => {
               onClick={closeDrawer}
               className="flex items-center p-2 text-gray-900 rounded-lg bg-secondary hover:bg-secondary/70 duration-300 group"
             >
-              <span className="ms-3 flex items-center gap-2">
+              <span className="ms-3 flex font-title  items-center gap-2">
                 <GoArrowLeft size={20} /> Back To Home
               </span>
             </Link>
