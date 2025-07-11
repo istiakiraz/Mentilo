@@ -20,7 +20,7 @@ const AllTrainerCard = ({trainer}) => {
                </div>
             <h1> Years of Experience : {trainer.experience}</h1>
             <p className='flex items-center mt-1 gap-2' >Skills :   {trainer.skills.map((skill, index) => (
-          <p className='text-sm cursor-pointer hover:bg-primary/0 duration-300 bg-primary/50 text-white px-2 rounded-2xl border border-primary' key={index}>{skill}</p>
+          <p className='text-sm cursor-pointer hover:bg-primary/70 duration-300 bg-primary/50 text-white px-2 rounded-2xl border border-primary' key={index}>{skill}</p>
         ))} </p>
         <p className='flex items-center text-sm mt-2 gap-2'>Available In : {trainer.availableDays.map((day, index)=> <p key={index} > {day} </p> )} </p>
             </div>
