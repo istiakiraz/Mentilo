@@ -139,14 +139,14 @@ const Navbar = () => {
           </Link>
 
           {/* Sign In Button */}
-          <div className="flex lg:order-2 space-x-3 items-center lg:space-x-0 rtl:space-x-reverse">
+          <div className="flex lg:order-2 space-x-3  items-center lg:space-x-0 rtl:space-x-reverse">
             {user && (
               <Link to='/dashboard'>
                 {userInfo?.photo ? (
                   <img className="rounded-full size-12 border-2 cursor-pointer object-cover border-secondary mr-2 " src={userInfo.photo} alt={userInfo?.name} />
                 ) : (
-                  <span className="rounded-full  border-2 cursor-pointer  border-secondary mr-2 ">
-                    <FaUserCircle size={40} color="white" /> 
+                  <span className="" >
+                    <FaUserCircle size={42} color="white" className=" rounded-full border-2   cursor-pointer border-secondary mr-2 " /> 
                   </span>
                 )}
               </Link>

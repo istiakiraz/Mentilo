@@ -323,6 +323,32 @@ Join Mentilo as a trainer and grow your impact — one session at a time.</p>
   )}
 </div>
 
+   {/*Facebook Profile */}
+        <div>
+          <label className="block mb-2 font-semibold">Facebook Profile</label>
+          <input
+            {...register('facebook', { required: true })}
+            type="url"
+            value={'https://www.facebook.com/istiak.iraz'}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none  focus:ring-primary"
+            placeholder="https://facebook.com/yourprofile"
+          />
+          {errors.facebook && <p className="text-red-500 text-sm">Facebook Profile is required</p>}
+        </div>
+
+           {/* Instagram  */}
+        <div>
+          <label className="block mb-2 font-semibold">Instagram Profile</label>
+          <input
+            {...register('instagram', { required: true })}
+            type="url"
+            value={"https://www.instagram.com/iraz_mahmud/"}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none  focus:ring-primary"
+            placeholder="https://instagram.com/yourprofile"
+          />
+          {errors.instagram  && <p className="text-red-500 text-sm">Instagram Profile is required</p>}
+        </div>
+
         {/* Other Info */}
         <div className="md:col-span-2">
           <label className="block mb-2 font-semibold">Other Info</label>
