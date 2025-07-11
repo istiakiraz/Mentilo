@@ -13,7 +13,7 @@ import {
   FiUserCheck,
   FiDollarSign,
 } from "react-icons/fi";
-import { FaCalendarPlus } from "react-icons/fa";
+import { FaCalendarPlus, FaUserClock } from "react-icons/fa";
 
 const DashboardLayouts = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -162,11 +162,20 @@ const DashboardLayouts = () => {
             </li>
             <li>
               <NavLink
+                to="/dashboard/all-trainers"
+                onClick={closeDrawer}
+                className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
+              >
+                <FiUserCheck className="text-xl" /> All Trainers
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/dashboard/applied-trainer"
                 onClick={closeDrawer}
                 className="flex items-center gap-2 p-2 text-white rounded-lg hover:bg-gray-700 ms-3 group"
               >
-                <FiUserCheck className="text-xl" /> Applied Trainer
+                <FaUserClock className="text-xl" /> Applied Trainer
               </NavLink>
             </li>
             <li>

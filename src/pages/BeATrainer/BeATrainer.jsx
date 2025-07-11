@@ -238,7 +238,7 @@ Join Mentilo as a trainer and grow your impact — one session at a time.</p>
                     placeholder="Picture"
                     onChange={handleImgUpload}
                     type="file"
-                    className="file:mr-4 file:rounded-full file:border-0 file:bg-violet-50 file:px-4 file:py-2 file:text-sm file:font-semibold  hover:file:bg-violet-100 file:text-primary  flex-grow w-full h-12 px-4 transition duration-200 bg-white  rounded  appearance-none focus:border-deep-purple-accent-400   "
+                    className="file:mr-4 overflow-x-hidden file:rounded-full file:border-0 file:bg-violet-50 file:px-4 file:py-2 file:text-sm file:font-semibold  hover:file:bg-violet-100 file:text-primary  flex-grow w-full h-12 px-4 transition duration-200 bg-white  rounded  appearance-none focus:border-deep-purple-accent-400   "
                   />
                 </div>
               </div>

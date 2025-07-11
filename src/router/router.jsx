@@ -18,6 +18,7 @@ import AppliedTrainer from "../pages/Dashboard/Admin/AppliedTrainer";
 import Balance from "../pages/Dashboard/Admin/Balance";
 import AddClass from "../pages/Dashboard/Admin/AddClass";
 import BeATrainer from "../pages/BeATrainer/BeATrainer";
+import AllTrainers from "../pages/Dashboard/Admin/AllTrainers";
  
 export const router = createBrowserRouter([
     {
@@ -94,7 +95,7 @@ export const router = createBrowserRouter([
             } ,
             {
                 path: "all-trainers",
-                element: <AllTrainer></AllTrainer>
+                element: <AllTrainers></AllTrainers>
             },
             {
                 path: "applied-trainer",
