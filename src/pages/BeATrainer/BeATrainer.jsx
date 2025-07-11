@@ -152,7 +152,7 @@ const BeATrainer = () => {
     const res = await axios.post(imgURL, formData);
 
     setProfilePic(res.data.data.url);
-    console.log(res.data.data.url);
+    // console.log(res.data.data.url);
   };
 
   const handleSlotChange = (e) => {

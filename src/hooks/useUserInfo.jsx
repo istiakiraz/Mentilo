@@ -11,6 +11,7 @@ const useUserInfo = () => {
     const {
         data: userInfo = {},
         isLoading: userInfoLoading,
+        refetch
 
     } = useQuery({
         queryKey: ['userInfo', user?.email],
@@ -23,7 +24,7 @@ const useUserInfo = () => {
     })
 
     return {
-        userInfo , userInfoLoading : userInfoLoading
+        userInfo , userInfoLoading : userInfoLoading , refetch
     }
 };
 

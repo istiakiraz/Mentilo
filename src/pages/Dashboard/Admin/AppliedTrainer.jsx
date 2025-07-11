@@ -70,7 +70,7 @@ const AppliedTrainer = () => {
 
   return (
     <div className="py-10 lg:px-4">
-      <h2 className="text-3xl font-bold text-center mb-6 text-primary">
+      <h2 className="text-3xl lg:text-5xl font-title font-bold text-center mb-6 text-primary">
         Pending Trainer Applications
       </h2>
 
