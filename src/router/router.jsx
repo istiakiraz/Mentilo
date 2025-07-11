@@ -19,6 +19,7 @@ import Balance from "../pages/Dashboard/Admin/Balance";
 import AddClass from "../pages/Dashboard/Admin/AddClass";
 import BeATrainer from "../pages/BeATrainer/BeATrainer";
 import AllTrainers from "../pages/Dashboard/Admin/AllTrainers";
+import TrainerDetails from "../pages/TrainerDetails/TrainerDetails";
  
 export const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
             {
                 path: 'be-a-trainer',
                 element: <BeATrainer></BeATrainer>
+            },
+            {
+                path: "trainer-details/:id",
+                element: <TrainerDetails></TrainerDetails>
             }
         ]
         

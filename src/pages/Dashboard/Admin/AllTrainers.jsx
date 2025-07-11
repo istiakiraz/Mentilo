@@ -17,25 +17,6 @@ const AllTrainers = () => {
     },
   });
 
-  // Approve trainer
-//   const handleDeleteTrainer = async (id , email) => {
-
-//     const  status = "approved";
-
-//     try {
-//       const res = await axiosSecure.patch(`/trainers/approve/${id}` , {
-//          status,
-//          email
-//         });
-//       if (res.data.modifiedCount > 0) {
-//         refetch();
-//         Swal.fire("Approved", "Trainer has been approved.", "success");
-//       }
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
-
   // Reject trainer
   const handleReject = async (id ,email) => {
     const { value: feedback } = await Swal.fire({
