@@ -6,6 +6,7 @@ import img from "../../../assets/svg/Workout-cuate.svg";
 
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import axios from "axios";
 
 const AddClass = () => {
   const {
@@ -14,12 +15,14 @@ const AddClass = () => {
     reset,
     formState: { errors },
   } = useForm();
+  
   const axiosSecure = useAxiosSecure();
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [benefitInput, setBenefitInput] = useState("");
   const [benefits, setBenefits] = useState([]);
   const [selectedTrainers, setSelectedTrainers] = useState([]);
+  const [profilePic, setProfilePic] = useState("");
 
   // Fetch approved trainers
   const { data: trainers = [] } = useQuery({
@@ -80,6 +83,7 @@ const AddClass = () => {
       description: data.description,
       difficulty: selectedDifficulty?.value,
       exerciseTypes: selectedTypes,
+       classPhoto: profilePic,
       benefits,
       trainers: selectedTrainers.map((t) => ({
         _id: t._id,
@@ -94,16 +98,33 @@ const AddClass = () => {
       const res = await axiosSecure.post("/classes", classData);
       if (res.data.insertedId) {
         Swal.fire("Success", "Class added successfully", "success");
-        reset();
-        setSelectedDifficulty(null);
-        setSelectedTypes([]);
-        setBenefits([]);
-        setSelectedTrainers([]);
+        // reset();
+        // setSelectedDifficulty(null);
+        // setSelectedTypes([]);
+        // setBenefits([]);
+        // setSelectedTrainers([]);
       }
     } catch (err) {
       console.error(err);
       Swal.fire("Error", "Something went wrong", "error");
     }
+  };
+
+   const handleImgUpload = async (e) => {
+    const image = e.target.files[0];
+    // console.log(image);
+
+    const formData = new FormData();
+    formData.append("image", image);
+
+    const imgURL = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_image_upload_Key
+    }`;
+
+    const res = await axios.post(imgURL, formData);
+
+    setProfilePic(res.data.data.url);
+    // console.log(res.data.data.url);
   };
 
   return (
@@ -223,8 +244,25 @@ const AddClass = () => {
             </ul>
           </div>
 
+             <div className="mb-1 flex items-center gap-3 sm:mb-2">
+               
+
+                <div>
+                  <label className="inline-block mb-2  ml-2 font-medium">
+                    Upload Class Cover Photo
+                  </label>
+
+                  <input
+                    placeholder="Picture"
+                    onChange={handleImgUpload}
+                    type="file"
+                    className="file:mr-4 overflow-x-hidden file:rounded-full file:border-0 file:bg-violet-50 file:px-4 file:py-2 file:text-sm file:font-semibold  hover:file:bg-violet-100 file:text-primary  flex-grow w-full h-12 px-4 transition duration-200  rounded  appearance-none focus:border-deep-purple-accent-400   "
+                  />
+                </div>
+              </div>
+
           {/* Trainers */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-1">
             <label className="block font-semibold mb-1">Select Trainers</label>
             <Select
               isMulti
