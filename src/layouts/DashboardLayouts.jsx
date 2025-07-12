@@ -27,10 +27,10 @@ const DashboardLayouts = () => {
   };
 
   return (
-    <div className="bg-secondary h-screen">
+    <div className="bg-secondary min-h-screen h-full">
       {/* ---   NAVBAR   --- */}
 
-      <nav className="sticky top-0 z-50 w-full border-b border-gray-200 bg-minor">
+      <nav className="sticky top-0 z-100 w-full border-b border-gray-200 bg-minor">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start rtl:justify-end">

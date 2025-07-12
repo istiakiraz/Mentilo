@@ -22,9 +22,9 @@ const AllTrainerCard = ({trainer}) => {
             <p className='flex items-center mt-1 gap-2' >Skills :   {trainer.skills.map((skill, index) => (
           <p className='text-sm cursor-pointer hover:bg-primary/70 duration-300 bg-primary/50 text-white px-2 rounded-2xl border border-primary' key={index}>{skill}</p>
         ))} </p>
-        <p className='flex items-center text-sm mt-2 gap-2'>Available In : {trainer.availableDays.map((day, index)=> <p key={index} > {day} </p> )} </p>
+        <p className='flex items-center  text-sm mt-2 gap-2'>Available In : {trainer.availableDays.map((day, index)=> <p key={index} > {day} </p> )} </p>
             </div>
-            <Link to={`/trainer-details/${trainer._id}`} className='px-6 flex -mt-5 justify-end ' >
+            <Link to={`/trainer-details/${trainer._id}`} className='px-6 flex -mt-4 justify-end ' >
                  <button className="relative inline-block mt-4 cursor-pointer text-lg group">
               <span className="relative z-10 block md:px-5 px-3 py-2 md:py-2 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-primary rounded-lg group-hover:text-secondary">
                 <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>

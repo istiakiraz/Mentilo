@@ -128,7 +128,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-minor  w-full z-20 sticky top-0 start-0">
+      <nav className="bg-minor  w-full z-100 sticky top-0 start-0">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between lg:py-7 mx-auto p-4">
           {/* Logo */}
           <Link

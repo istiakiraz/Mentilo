@@ -109,7 +109,7 @@ const SignIn = () => {
           </Link>
         </div>
 
-        <div className="  lg:w-6/12 mx-auto ">
+        <div className="  lg:w-7/12 mx-auto ">
           <div className="lg:flex justify-center mb-8 hidden  items-end">
             <img className="w-16" src={logo} alt="" />
             <h2 className="text-4xl font-logo -ml-3 text-primary ">Mentilo</h2>
