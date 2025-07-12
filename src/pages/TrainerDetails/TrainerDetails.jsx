@@ -6,6 +6,7 @@ import img1 from "../../assets/svg/action-card.png";
 import img2 from "../../assets/svg/Personal Trainer-amico.svg";
 import { FaArrowDownLong } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import AvailableSlots from "./AvailableSlots";
 
 const TrainerDetails = () => {
   const { id } = useParams();
@@ -44,19 +45,24 @@ const TrainerDetails = () => {
         {trainer.name} Details{" "}
       </h1>
 
-      <div className="border-b-2 flex flex-col items-center justify-around lg:flex-row  border-primary/50 lg:py-10 border-dashed">
+      <div className="border-b-2 flex flex-col items-center justify-between lg:flex-row  border-primary/50 lg:py-10 border-dashed">
         <div className="flex flex-col lg:flex-row items-center gap-8">
           <img
             className="rounded-2xl border-2 shadow-[-8px_-7px_0px_0px_#432365] object-cover border-primary"
             src={trainer.photo}
             alt={trainer.name}
           />
-          <div className="w-11/12 mx-0 lg:w-full" >
+          <div className="w-11/12 mx-0 lg:w-full">
             <h1 className="text-2xl font-bold"> Name : {trainer.name}</h1>
-           <span className=" flex items-center gap-6"> <h3 className="lg:text-xl "> Age : {trainer.age}</h3>
-           <h3 className="lg:text-xl "> Experience : {trainer.experience}</h3>
-           </span>
-            
+            <span className=" flex items-center gap-6">
+              {" "}
+              <h3 className="lg:text-xl "> Age : {trainer.age}</h3>
+              <h3 className="lg:text-xl ">
+                {" "}
+                Experience : {trainer.experience}
+              </h3>
+            </span>
+
             <h3 className="lg:text-xl mb-8"> Email : {trainer.email}</h3>
             <h3 className="text-xl flex items-center gap-3 mb-2">
               {" "}
@@ -70,29 +76,46 @@ const TrainerDetails = () => {
                 </p>
               ))}{" "}
             </h3>
-            <p className="lg:w-10/12 hyphens-auto text-left leading-relaxed selection:bg-primary/30"> <span className="underline font-bold"> About {trainer.name}</span> : {trainer.otherInfo}</p>
+            <p className="lg:w-11/12 hyphens-auto text-left leading-relaxed selection:bg-primary/30">
+              {" "}
+              <span className="underline font-bold">
+                {" "}
+                About {trainer.name}
+              </span>{" "}
+              : {trainer.otherInfo}
+            </p>
           </div>
         </div>
-        <div className="flex items-center flex-col">
-            <h1 className="text-center text-3xl font-title mb-6 mt-8 lg:mt-0 font-bold text-primary">Book A Slot</h1>
-            <motion.span
-  className="mb-2"
-  animate={{ y: [0, 10, 0] }} 
-  transition={{
-    duration: 1.5,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
->
-  <FaArrowDownLong size={30} color="#432365" />
-</motion.span>
-            <h3 className="text-center text-xl font-title mb-3 mt-8 lg:mt-0 font-bold text-primary" >Available slots</h3>
-            <h4 className="w-40 bg-primary text-center mb-2  text-white p-2">demo</h4>
-            <h4 className="w-40 bg-primary text-center mb-2 text-white p-2 ">demo</h4>
-            <h4 className="w-40 bg-primary text-center mb-2 text-white p-2 ">demo</h4>
-            <div className="w-full" >
-                <h2 className="flex gap-2 items-center flex-wrap my-4 " ><span className="font-bold">Available Days</span> : {trainer.availableDays.map((day, index)=> <p key={index} className="bg-secondary px-2" > {day} </p> )} </h2>
-            </div>
+        <div className="flex items-center w-11/12 mx-auto flex-col">
+          <h1 className="text-center text-3xl font-title mb-6 mt-8 lg:mt-0 font-bold text-primary">
+            Book A Slot
+          </h1>
+          <motion.span
+            className="mb-2"
+            animate={{ y: [0, 10, 0] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <FaArrowDownLong size={30} color="#432365" />
+          </motion.span>
+          <h3 className="text-center text-xl font-title mb-3 mt-8 lg:mt-0 font-bold text-primary">
+            Available slots
+          </h3>
+          <AvailableSlots email={trainer?.email}></AvailableSlots>
+          <div className="w-full">
+            <h2 className="flex gap-2 items-center justify-center flex-wrap my-4 ">
+              <span className="font-bold  ">Available Days :</span> {" "}
+              {trainer.availableDays.map((day, index) => (
+                <p key={index} className="bg-secondary px-2">
+                  {" "}
+                  {day}{" "}
+                </p>
+              ))}{" "}
+            </h2>
+          </div>
         </div>
       </div>
 
