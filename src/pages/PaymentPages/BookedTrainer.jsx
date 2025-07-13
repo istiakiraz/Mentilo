@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaHandPointRight } from "react-icons/fa";
 import { FaArrowDownLong } from "react-icons/fa6";
 
 const BookedTrainer = () => {
@@ -14,16 +14,17 @@ const BookedTrainer = () => {
   const handleJoinNow = () => {
     if (!selectedPackage) return;
 
-    console.log(selectedPackage);
-    console.log(bookingDate);
+    // console.log(selectedPackage);
+    // console.log(bookingDate);
 
-    // navigate("/payment", {
-    //   state: {
-    //     trainer,
-    //     selectedSlot,
-    //     selectedPackage,
-    //   },
-    // });
+    navigate("/payment", {
+      state: {
+        trainer,
+        selectedSlot,
+        selectedPackage,
+        bookingDate
+      },
+    });
   };
 
   const packages = [
@@ -82,6 +83,9 @@ const BookedTrainer = () => {
         <p className="lg:text-xl my-2">
           Days: {selectedSlot?.availableDays.join(", ")}
         </p>
+        <p className="lg:text-xl bg-primary/40 p-2 my-2">
+          <span className="font-black">Classes :</span> {trainer?.skills.join(", ")}
+        </p>
       </div>
 
       {/* Packages Cards */}
@@ -103,10 +107,10 @@ const BookedTrainer = () => {
           <div
             key={pack.value}
             onClick={() => setSelectedPackage(pack)}
-            className={`cursor-pointer border-2 shadow-[10px_10px_0px_0px_#432365] rounded-xl p-6 py-10 transition-all duration-300 ${
+            className={`cursor-pointer border-2  shadow-[10px_10px_0px_0px_#432365] rounded-xl p-6 py-10 transition-all duration-300 ${
               selectedPackage?.value === pack.value
                 ? "border-primary  ring-2 ring-primary bg-primary/10"
-                : "border-gray-200 hover:shadow-md"
+                : "border-gray-200  hover:shadow-md"
             }`}
           >
             <h3 className="text-xl lg:text-2xl font-title text-primary font-bold text-center mb-2">
@@ -140,8 +144,8 @@ const BookedTrainer = () => {
           <span className="relative z-10 block md:px-5 px-3 py-2 md:py-2 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-primary rounded-lg group-hover:text-secondary">
             <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
             <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-primary group-hover:-rotate-180 ease"></span>
-            <span className="relative font-title text-sm md:text-[16px] flex items-center gap-2">
-              👉 Join Now
+            <span className="relative font-title text-sm md:text-[16px] hover:text-white flex items-center gap-2">
+              <FaHandPointRight  /> Join Now
             </span>
           </span>
           <span className="absolute bottom-0 right-0 w-full h-10 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-primary rounded-lg group-hover:mb-0 group-hover:mr-0" />
