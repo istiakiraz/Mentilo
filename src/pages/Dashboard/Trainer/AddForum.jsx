@@ -26,7 +26,8 @@ const axiosSecure = useAxiosSecure()
          Dislike : 0,
          userEmail : userInfo.email,
          userRole : userInfo.role,
-         date: new Date()
+         date: new Date(),
+         userPhoto : userInfo.photo
     } 
 
     // Optional: Console log
