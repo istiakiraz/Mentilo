@@ -67,7 +67,7 @@ const BookedTrainerPage = () => {
   };
 
   return (
-    <div className="lg:w-10/12 w-11/12 mx-auto py-10">
+    <div className="lg:w-11/12  mx-auto py-10">
       <h1 className="text-4xl lg:text-5xl font-title text-center font-bold text-primary mb-6">
         Your Trainer Bookings
       </h1>
@@ -97,7 +97,7 @@ const BookedTrainerPage = () => {
                 </h3>
                 <p>Package: {booking.packageName}</p>
                 <p>Price: ${booking.price}</p>
-                <p>Date: {booking.bookingDate}</p>
+                <p>Date: {new Date(booking.bookingDate).toLocaleDateString()}</p>
                 <p className="text-sm text-gray-500">
                   Transaction ID: {booking.transactionId}
                 </p>

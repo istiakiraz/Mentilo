@@ -11,7 +11,7 @@ const PaymentForm = ({ paymentInfo, trainerInfo, slotInfo, userInfo }) => {
 
   const amount = paymentInfo?.price;
   const amountInCents = amount * 100;
-   const bookingDate = new Date().toLocaleDateString();
+   const bookingDate = new Date();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
