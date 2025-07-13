@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQueryClient } from "@tanstack/react-query";
 const AllForumCard = ({ forum }) => {
+
+    const axiosSecure = useAxiosSecure();
+     const queryClient = useQueryClient();
+
   const [isOpen, setIsOpen] = useState(false);
   const {
     title,
@@ -13,6 +19,16 @@ const AllForumCard = ({ forum }) => {
     date,
     userRole
   } = forum;
+
+    const handleLike = async () => {
+    await axiosSecure.patch(`/forum/like/${forum._id}`);
+    queryClient.invalidateQueries(["forums"]);
+  };
+
+  const handleDislike = async () => {
+    await axiosSecure.patch(`/forum/dislike/${forum._id}`);
+    queryClient.invalidateQueries(["forums"]);
+  };
 
   return (
     <>
@@ -51,10 +67,10 @@ const AllForumCard = ({ forum }) => {
           {/* Actions */}
           <div className="flex items-center justify-between mt-auto">
             <div className="flex items-center gap-3 text-sm text-gray-500">
-              <span className="flex cursor-pointer items-center gap-1">
+              <span onClick={handleLike} className="flex cursor-pointer items-center gap-1">
                 <FaRegThumbsUp /> {like}
               </span>
-              <span className="flex cursor-pointer items-center gap-1">
+              <span onClick={handleDislike} className="flex cursor-pointer items-center gap-1">
                 <FaRegThumbsDown /> {Dislike}
               </span>
             </div>
