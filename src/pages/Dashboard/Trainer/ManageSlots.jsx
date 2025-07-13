@@ -9,7 +9,7 @@ const ManageSlots = () => {
   const axiosSecure = useAxiosSecure();
 
   // Load trainer's slots from database
-  const { data: slots = [], refetch } = useQuery({
+  const { data: slots = [], refetch, isLoading } = useQuery({
     queryKey: ["trainerSlots", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
@@ -45,9 +45,13 @@ const ManageSlots = () => {
     });
   };
 
+  if (isLoading) {
+    return <div className="text-center min-h-screen text-primary py-10 text-xl">Loading...</div>;
+  }
+
   return (
     <div className=" mx-auto py-10">
-      <h2 className="text-3xl font-title font-bold text-center text-primary mb-6">
+      <h2 className="text-3xl lg:text-5xl font-title font-bold text-center text-primary mb-6">
         Manage Your Slots
       </h2>
 
@@ -55,7 +59,7 @@ const ManageSlots = () => {
         <p className="text-center text-gray-500">No slots found.</p>
       ) : (
         <div className="overflow-x-auto shadow-md rounded">
-          <table className="min-w-full bg-white border border-gray-200">
+          <table className="min-w-full border-primary border-2  bg-white ">
             <thead className="bg-primary/20 text-primary">
               <tr>
                 <th className="px-4 py-3 text-left">#</th>

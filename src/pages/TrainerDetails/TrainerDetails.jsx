@@ -104,7 +104,7 @@ const TrainerDetails = () => {
           <h3 className="text-center text-xl font-title mb-3 mt-8 lg:mt-0 font-bold text-primary">
             Available slots
           </h3>
-          <AvailableSlots email={trainer?.email}></AvailableSlots>
+          <div className="mx-auto"><AvailableSlots trainer={trainer}></AvailableSlots></div>
           <div className="w-full">
             <h2 className="flex gap-2 items-center justify-center flex-wrap my-4 ">
               <span className="font-bold  ">Available Days :</span> {" "}

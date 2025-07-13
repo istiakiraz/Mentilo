@@ -20,6 +20,7 @@ import AddClass from "../pages/Dashboard/Admin/AddClass";
 import BeATrainer from "../pages/BeATrainer/BeATrainer";
 import AllTrainers from "../pages/Dashboard/Admin/AllTrainers";
 import TrainerDetails from "../pages/TrainerDetails/TrainerDetails";
+import BookedTrainer from "../pages/PaymentPages/BookedTrainer";
  
 export const router = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
             {
                 path: "trainer-details/:id",
                 element: <TrainerDetails></TrainerDetails>
+            },
+            {
+                path: 'booked-trainer',
+                element: <BookedTrainer></BookedTrainer>
             }
         ]
         

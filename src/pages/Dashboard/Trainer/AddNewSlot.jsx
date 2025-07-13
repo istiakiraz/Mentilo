@@ -53,7 +53,7 @@ console.log(myClasses);
       const res = await axiosSecure.post("/slots", slotData);
       if (res.data.insertedId) {
         Swal.fire("Success", "Slot added successfully!", "success");
-        // reset();
+        reset();
       }
     } catch (error) {
       console.error(error);
@@ -96,7 +96,7 @@ console.log(myClasses);
   };
 
   return (
-    <div className="max-w-6xl mx-auto py-10 px-4">
+    <div className=" mx-auto py-10 px-4">
       {/* 1st Part: Trainer Info */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
         <div className="border border-primary rounded-xl p-4 shadow">
