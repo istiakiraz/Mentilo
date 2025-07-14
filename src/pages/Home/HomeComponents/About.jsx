@@ -12,7 +12,7 @@ const About = () => {
           The Story
         </span>
       </h1>
-      <h2 className=" font-black text-primary text-4xl  lg:text-6xl font-title text-center uppercase leading-none">
+      <h2  className=" font-black text-primary text-4xl  lg:text-6xl font-title text-center uppercase leading-none">
         {" "}
        Behind Mentilo
       </h2>
