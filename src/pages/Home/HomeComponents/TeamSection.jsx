@@ -22,23 +22,21 @@ const TeamSection = () => {
   }
 
   return (
-    <div className="lg:w-6/12 mx-auto   my-10">
+    <div className="lg:w-6/12 mx-auto   my-20">
       <h1 className=" lg:text-5xl text-3xl text-center font-title   uppercase leading-none">
-        <span className="relative inline-block text-transparent stroke-text">
+        <span className="relative inline-block font-extrabold text-transparent stroke-text">
           Mentilo’s
         </span>
       </h1>
-      <h2 className=" font-black text-primary text-5xl lg:text-7xl font-title text-center uppercase leading-none">
+      <h2 className=" font-black text-primary text-5xl  lg:text-7xl font-title text-center uppercase leading-none">
         {" "}
         Fitness Champions{" "}
       </h2>
       <div className="grid grid-cols-2 my-6 ">
-        {trainers.map((trainer, index) => (
+        {trainers?.map((trainer, index) => (
           <div
             key={trainer._id}
-            className={`p-6  ${
-              index === 0 ? "  col-span-2  transform scale-105" : "bg-white"
-            }`}
+            className={`p-6  ${index === 0 ? "  col-span-2" : ""}`}
           >
             <img
               src={trainer.photo}
@@ -50,14 +48,18 @@ const TeamSection = () => {
               }`}
             />
 
-       <div className="bg-secondary p-2 px-3 -mt-12 z-40 relative w-fit mx-auto shadow-[5px_5px_0px_0px_#432365] rounded" >
-          <h2 className="lg:text-xl font-title text-primary font-bold text-center mb-1">
+            <div className="bg-secondary p-2  -mt-12 z-40 relative w-fit mx-auto shadow-[5px_5px_0px_0px_#432365] rounded">
+              <h2
+                className={`font-title text-primary font-bold text-center mb-1" ${
+                  index === 0 ? " px-4 lg:text-xl" : " px-2 "
+                }`}
+              >
                 {trainer.name}
               </h2>
               <p className="text-center font-title text-sm">
                 {trainer.age} years old, {trainer.experience} yrs exp.
               </p>
-       </div>
+            </div>
           </div>
         ))}
       </div>
