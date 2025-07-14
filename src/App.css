@@ -34,3 +34,8 @@ body{
   color: transparent;
   font-family: var(--font-title);
 }
+.hero-text {
+  -webkit-text-stroke: 1px white  ;
+  color: transparent;
+  font-family: var(--font-title);
+}
