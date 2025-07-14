@@ -97,7 +97,7 @@ const Newsletter = () => {
             alt="post box svg"
           />
           <img
-            className="lg:w-60 md:w-36 w-44 -top-2 hidden lg:block lg:top-0  hover:scale-110 duration-300 md:top-25 md:right-39  lg:right-130 absolute"
+            className="lg:w-60 md:w-36 w-44 -top-2 hidden lg:block lg:top-0  hover:scale-110 duration-300 md:top-25 md:right-39  lg:right-120 absolute"
             src={message}
             alt="message card"
           />
