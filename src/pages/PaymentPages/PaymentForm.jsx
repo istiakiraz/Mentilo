@@ -11,7 +11,7 @@ const PaymentForm = ({ paymentInfo, trainerInfo, slotInfo, userInfo }) => {
 
   const amount = paymentInfo?.price;
   const amountInCents = amount * 100;
-   const bookingDate = new Date();
+  const bookingDate = new Date();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,26 +68,26 @@ const PaymentForm = ({ paymentInfo, trainerInfo, slotInfo, userInfo }) => {
           // step-4 : add a new collection in database
 
           const bookingData = {
-            BookedBy : userInfo.name,
-            bookingEmail : userInfo.email,
+            BookedBy: userInfo.name,
+            bookingEmail: userInfo.email,
             price: amount,
-            packageName : paymentInfo.value,
+            packageName: paymentInfo.value,
             bookingDate,
-            trainerName : trainerInfo.name,
-            trainerEmail : trainerInfo.email,
-            slotName : slotInfo.slotName,
+            trainerName: trainerInfo.name,
+            trainerEmail: trainerInfo.email,
+            slotName: slotInfo.slotName,
             days: slotInfo.availableDays,
-            classes : trainerInfo.skills,
+            classes: trainerInfo.skills,
             transactionId: result.paymentIntent.id,
-               paymentMethod: result.paymentIntent,
-               slotId: slotInfo._id
+            paymentMethod: result.paymentIntent,
+            slotId: slotInfo._id,
           };
 
-          const bookingRes = await axiosSecure.post('/booking' , bookingData)
+          const bookingRes = await axiosSecure.post("/booking", bookingData);
 
           console.log(bookingRes);
 
-          console.log( 'bookingData', bookingData);
+          console.log("bookingData", bookingData);
         }
 
         console.log("res from intent", res);
@@ -97,14 +97,15 @@ const PaymentForm = ({ paymentInfo, trainerInfo, slotInfo, userInfo }) => {
 
   return (
     <div>
+      <h1 className="text-primary text-2xl lg:text-3xl font-title text-center" >Make Your Payment Below</h1>
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 mt-6 bg-white p-6 rounded-xl shadow-md w-10/12 lg:w-6/12 mx-auto "
+        className="space-y-4 mt-6 bg-white border shadow-[5px_5px_0px_0px_#432365] border-primary p-6 rounded-xl  w-10/12 lg:w-6/12 mx-auto "
       >
         <CardElement className="p-2 border rounded"></CardElement>
 
         <button
-          className="bg-primary w-full cursor-pointer hover:bg-primary/80 duration-200 text-white px-4 py-1 rounded"
+          className="bg-primary w-full py-2 cursor-pointer hover:bg-primary/80 duration-200 text-white px-4  rounded"
           type="submit"
           disabled={!stripe}
         >
@@ -113,7 +114,6 @@ const PaymentForm = ({ paymentInfo, trainerInfo, slotInfo, userInfo }) => {
 
         {error && <p className="text-red-500 text-center">{error}</p>}
       </form>
-      <h1>{trainerInfo.name}</h1>
     </div>
   );
 };

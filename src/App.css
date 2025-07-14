@@ -26,3 +26,11 @@ body{
 .swiper-pagination-bullet-active {
   background-color: #432365  !important ; 
 }
+
+
+
+.stroke-text {
+  -webkit-text-stroke: 2px #432365  ;
+  color: transparent;
+  font-family: var(--font-title);
+}

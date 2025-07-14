@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -15,7 +15,7 @@ const ReviewSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const { data: reviews = [], isLoading } = useQuery({
-    queryKey: ["newsletters"],
+    queryKey: ["reviews"],
     queryFn: async () => {
       const res = await axiosSecure.get("/reviews");
       return res.data;
@@ -30,24 +30,31 @@ const ReviewSection = () => {
     );
   }
 
+  // repeat cards if less than 6
+  const repeatedReviews = reviews.length < 6 ? [...reviews, ...reviews] : reviews;
+
   return (
-    <div className="py-16 w-11/12 relative mx-auto lg:w-full mb-16">
+    <div className="py-16 w-11/12 mx-auto md:w-full mb-16 relative">
       <Swiper
         centeredSlides={true}
         loop={true}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
         pagination={{ el: ".swiper-pagination", clickable: true }}
         navigation={{ nextEl: ".custom-next", prevEl: ".custom-prev" }}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
         breakpoints={{
           640: { slidesPerView: 1 },
-          768: { slidesPerView: 3, spaceBetween: 20 },
+          768: { slidesPerView: 2, spaceBetween: 20 },
           1024: { slidesPerView: 4.3, spaceBetween: 30 },
         }}
-        modules={[Pagination, Navigation]}
-        className="mySwiper  "
+        modules={[Pagination, Navigation, Autoplay]}
+        className="mySwiper"
       >
-        {reviews.map((review, idx) => {
-          const total = reviews.length;
+        {repeatedReviews.map((review, idx) => {
+          const total = repeatedReviews.length;
           const left2 = (activeIndex - 2 + total) % total;
           const left1 = (activeIndex - 1 + total) % total;
           const right1 = (activeIndex + 1) % total;
@@ -72,14 +79,12 @@ const ReviewSection = () => {
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity, y }}
-                transition={{ duration: 0.6 }}
-                className={`bg-secondary/50 cursor-grab rounded-2xl p-6 mb-16 shadow-md flex flex-col justify-between text-center w-full h-full`}
+                transition={{ duration: 0.5 }}
+                className="bg-secondary/50 cursor-grab rounded-2xl p-6  mb-16 shadow-md flex flex-col justify-between text-center w-full h-full "
               >
                 <div>
-                  <div className="text-4xl text-secondary font-bold mb-4">
-                    “
-                  </div>
-                  <p className="text-gray-700 overflow-x-hidden mb-6 text-sm md:text-base px-4">
+                  <div className="text-4xl text-secondary font-bold mb-4">“</div>
+                  <p className="text-gray-700 mb-6 text-sm md:text-base px-4">
                     {review.reviewText}
                   </p>
                   <hr className="border-dashed border-gray-300 mb-6 w-1/2 mx-auto" />
@@ -93,9 +98,7 @@ const ReviewSection = () => {
                       <h4 className="text-base font-semibold text-neutral">
                         {review.userName}
                       </h4>
-
-                      {/* Star Rating */}
-                      <p className="flex items-center mb-2">
+                      <p className="flex items-center">
                         {[...Array(5)].map((_, index) =>
                           index < review.rating ? (
                             <FaStar key={index} className="text-primary" />
@@ -112,14 +115,13 @@ const ReviewSection = () => {
           );
         })}
 
-        {/* Pagination Below Swiper */}
-        <div className="flex justify-center space-x-2  ">
-          <div className="swiper-pagination !static " />
+        {/* Swiper Pagination */}
+        <div className="flex justify-center mt-4">
+          <div className="swiper-pagination !static" />
         </div>
 
-        {/* Custom Controls */}
-
-        <SwiperNav></SwiperNav>
+        {/* Custom Navigation Buttons */}
+        <SwiperNav />
       </Swiper>
     </div>
   );
