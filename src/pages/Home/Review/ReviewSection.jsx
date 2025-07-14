@@ -35,6 +35,11 @@ const ReviewSection = () => {
 
   return (
     <div className="py-16 w-11/12 mx-auto md:w-full mb-16 relative">
+      <h2 className=" font-black text-primary/90 text-3xl mb-10 lg:text-4xl font-title text-center uppercase leading-none">
+        {" "}
+       What Our Users Say
+      </h2>
+      
       <Swiper
         centeredSlides={true}
         loop={true}

@@ -6,9 +6,9 @@ const SwiperNav = () => {
     const swiper = useSwiper()
     return (
         <div className='flex justify-center mt-6 gap-36' >
-            <button className='btn rounded-full p-3 bg-secondary hover:bg-white ' onClick={()=> swiper.slidePrev()} > <FaArrowLeft />
+            <button className='rounded-full p-3 bg-secondary border-2 border-primary hover:bg-primary/50 cursor-pointer duration-500 hover:scale-105 mb-2' onClick={()=> swiper.slidePrev()} > <FaArrowLeft />
             </button>
-            <button className='btn rounded-full p-3 bg-secondary hover:bg-white ' onClick={()=> swiper.slideNext()} > <FaArrowRight />
+            <button className='rounded-full p-3 bg-secondary border-2 border-primary hover:bg-primary/50 cursor-pointer duration-500 hover:scale-105 mb-2 ' onClick={()=> swiper.slideNext()} > <FaArrowRight />
             </button>
             
         </div>
