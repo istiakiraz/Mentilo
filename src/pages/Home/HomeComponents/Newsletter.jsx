@@ -51,7 +51,7 @@ const Newsletter = () => {
       }
     }
 
-    // e.target.closest("form").reset();
+    e.target.closest("form").reset();
   };
 
   return (

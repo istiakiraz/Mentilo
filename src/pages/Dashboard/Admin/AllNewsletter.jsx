@@ -72,9 +72,9 @@ const AllNewsletter = () => {
                 <td className="py-2 px-4">
                   <button
                     onClick={() => handleDelete(newsletter._id)}
-                    className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+                    className="bg-red-500 cursor-pointer hover:bg-red-600 text-white px-3 py-1 rounded"
                   >
-                    Delete
+                    Delete 
                   </button>
                 </td>
               </tr>
