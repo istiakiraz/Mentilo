@@ -20,6 +20,7 @@
     "firebase": "^11.10.0",
     "flowbite": "^3.1.2",
     "framer-motion": "^12.23.3",
+    "lottie-react": "^2.4.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.60.0",
