@@ -2,10 +2,25 @@ import React, { useState } from "react";
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQueryClient } from "@tanstack/react-query";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 const AllForumCard = ({ forum }) => {
+
+     const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
 
     const axiosSecure = useAxiosSecure();
      const queryClient = useQueryClient();
+     const {user} = useAuth()
 
   const [isOpen, setIsOpen] = useState(false);
   const {
@@ -21,11 +36,28 @@ const AllForumCard = ({ forum }) => {
   } = forum;
 
     const handleLike = async () => {
+        if(!user){
+            return  Toast.fire({
+          icon: "error",
+          title: `Please log in to like this post.`,
+          background: "#f9f6fc",
+          iconColor: "#432365",
+        });
+        }
+
     await axiosSecure.patch(`/forum/like/${forum._id}`);
     queryClient.invalidateQueries(["forums"]);
   };
 
   const handleDislike = async () => {
+     if(!user){
+            return  Toast.fire({
+          icon: "error",
+          title: `Please log in to dislike this post.`,
+          background: "#f9f6fc",
+          iconColor: "#432365",
+        });
+        }
     await axiosSecure.patch(`/forum/dislike/${forum._id}`);
     queryClient.invalidateQueries(["forums"]);
   };

@@ -13,7 +13,6 @@ import ActivityLogPage from "../pages/Dashboard/User/ActivityLogPage";
 import ManageSlots from "../pages/Dashboard/Trainer/ManageSlots";
 import AddNewSlot from "../pages/Dashboard/Trainer/AddNewSlot";
 import AddForum from "../pages/Dashboard/Trainer/AddForum";
-import Newsletter from "../pages/Dashboard/Admin/Newsletter";
 import AppliedTrainer from "../pages/Dashboard/Admin/AppliedTrainer";
 import Balance from "../pages/Dashboard/Admin/Balance";
 import AddClass from "../pages/Dashboard/Admin/AddClass";
@@ -22,6 +21,7 @@ import AllTrainers from "../pages/Dashboard/Admin/AllTrainers";
 import TrainerDetails from "../pages/TrainerDetails/TrainerDetails";
 import BookedTrainer from "../pages/PaymentPages/BookedTrainer";
 import Payment from "../pages/PaymentPages/Payment";
+import AllNewsletter from "../pages/Dashboard/Admin/AllNewsletter";
  
 export const router = createBrowserRouter([
     {
@@ -106,7 +106,7 @@ export const router = createBrowserRouter([
             // admin routes
             {
                 path: 'newsletter',
-                element: <Newsletter></Newsletter>
+                element: <AllNewsletter></AllNewsletter>
             } ,
             {
                 path: "all-trainers",
