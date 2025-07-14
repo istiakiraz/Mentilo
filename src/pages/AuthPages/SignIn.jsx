@@ -10,11 +10,9 @@ import { FiLock, FiMail } from "react-icons/fi";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-
+import useAxios from "../../hooks/useAxios";
 
 const SignIn = () => {
-
   const Toast = Swal.mixin({
     toast: true,
     position: "top-end",
@@ -27,59 +25,58 @@ const SignIn = () => {
     },
   });
 
-
   const [showPass, setShowPass] = useState(false);
-  const axiosSecure = useAxiosSecure()
-  const { register, handleSubmit,  formState: { errors }, } = useForm();
-  
+  const axiosInstance = useAxios();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const {signInUser,} = useAuth()
+  const { signInUser } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
 
-   const onSubmit = (data) => {
+  const onSubmit = (data) => {
     // console.log(data);
 
     signInUser(data.email, data.password)
-    .then(async(result)=>{
-        console.log(result.user)
+      .then(async (result) => {
+        console.log(result.user);
 
-         const userInfo = {
+        const userInfo = {
           email: data.email,
-          last_log_at : new Date().toISOString()
-        }
+          last_log_at: new Date().toISOString(),
+        };
 
-        const userRes = await axiosSecure.post('/users', userInfo)
+        const userRes = await axiosInstance.post("/users", userInfo);
 
         // console.log(userRes.data);
 
-        if(userRes.data.inserted === false ){
-          
-         navigate(`${location.state ? location.state : "/"}`);
+        if (userRes.data.inserted === false) {
+          navigate(`${location.state ? location.state : "/"}`);
 
-         Swal.fire({
-          title: `🏃‍♂️ Time to Move with Mentilo!`,
-          text: "Let’s crush today’s goals!.",
-          icon: "success",
-          confirmButtonText: "Get Started",
-          iconColor: "#432365",
-          confirmButtonColor: "#432365",
-          background: "#f9f6fc",
-        });
+          Swal.fire({
+            title: `🏃‍♂️ Time to Move with Mentilo!`,
+            text: "Let’s crush today’s goals!.",
+            icon: "success",
+            confirmButtonText: "Get Started",
+            iconColor: "#432365",
+            confirmButtonColor: "#432365",
+            background: "#f9f6fc",
+          });
         }
-
-    })
-    .catch(error =>{
+      })
+      .catch((error) => {
         console.log(error);
-         Toast.fire({
+        Toast.fire({
           icon: "error",
-           background: "#f9f6fc",
+          background: "#f9f6fc",
           iconColor: "#432365",
           title: "Incorrect email or password",
-          });
-    })
-
+        });
+      });
   };
 
   return (
@@ -114,7 +111,11 @@ const SignIn = () => {
             <img className="w-16" src={logo} alt="" />
             <h2 className="text-4xl font-logo -ml-3 text-primary ">Mentilo</h2>
           </div>
-          <img className="lg:hidden mb-8 w-50 mx-auto " src={logo2} alt="logo" />
+          <img
+            className="lg:hidden mb-8 w-50 mx-auto "
+            src={logo2}
+            alt="logo"
+          />
 
           <div className="bg-white rounded-xl  shadow-2xl p-7 sm:p-10">
             <h3 className="mb-4 lg:text-4xl font-title text-primary font-semibold text-center sm:mb-6 text-2xl">
@@ -123,24 +124,22 @@ const SignIn = () => {
             <p className="text-gray-500 text-center pb-7 font-semibold ">
               Welcome back! Please enter your details.
             </p>
-            <form onSubmit={handleSubmit(onSubmit)} >
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-1 sm:mb-2">
-
                 {/* Email Input */}
                 <div className="mb-4 relative">
                   <FiMail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
                   <input
                     placeholder="Email"
-                   {...register("email" , { required: true })}
+                    {...register("email", { required: true })}
                     type="email"
                     className="pl-10 flex-grow w-full h-12 px-4 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                     name="email"
                   />
 
-                    {errors.email?.type === "required" && (
-            <p className="text-red-700">Email is required</p>
-          )}
-
+                  {errors.email?.type === "required" && (
+                    <p className="text-red-700">Email is required</p>
+                  )}
                 </div>
 
                 {/* Password Input */}
@@ -148,15 +147,15 @@ const SignIn = () => {
                   <FiLock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
                   <input
                     placeholder="Password"
-                      {...register("password" , { required: true })}
+                    {...register("password", { required: true })}
                     type={showPass ? "text" : "password"}
                     className="pl-10 flex-grow w-full h-12 px-4 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                     name="password"
                   />
 
-                     {errors.password?.type === "required" && (
-            <p className="text-red-700">password is required</p>
-          )}
+                  {errors.password?.type === "required" && (
+                    <p className="text-red-700">password is required</p>
+                  )}
 
                   <button
                     type="button"
@@ -189,20 +188,18 @@ const SignIn = () => {
                   Sign In
                 </button>
               </div>
-
-           
             </form>
-               <GoogleLogIn></GoogleLogIn>
+            <GoogleLogIn></GoogleLogIn>
 
-              <p className="text-center text-sm  mx-auto mb-2 flex gap-1 mt-2">
-                Don’t have an account yet?{" "}
-                <Link
-                  to="/sign-up"
-                  className="text-primary hover:no-underline underline"
-                >
-                  Sign-Up
-                </Link>{" "}
-              </p>
+            <p className="text-center text-sm  mx-auto mb-2 flex gap-1 mt-2">
+              Don’t have an account yet?{" "}
+              <Link
+                to="/sign-up"
+                className="text-primary hover:no-underline underline"
+              >
+                Sign-Up
+              </Link>{" "}
+            </p>
           </div>
         </div>
       </div>

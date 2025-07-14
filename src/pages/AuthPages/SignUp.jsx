@@ -9,11 +9,11 @@ import { FiLock, FiMail, FiUser } from "react-icons/fi";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxios from "../../hooks/useAxios";
 
 const SignUp = () => {
   const [showPass, setShowPass] = useState(false);
-  const axiosSecure = useAxiosSecure()
+  const axiosInstance = useAxios()
 
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const SignUp = () => {
         }
 
 
-        const userRes = await axiosSecure.post('/users', userInfo)
+        const userRes = await axiosInstance.post('/users', userInfo)
 
 
         // console.log(userRes.data);
@@ -125,7 +125,7 @@ const SignUp = () => {
               <div className="mb-1 flex items-center gap-3 sm:mb-2">
                 {profilePic && (
                   <img
-                    className="rounded-full size-14 mt-3 border-2 border-primary"
+                    className="rounded-full object-cover size-12 mt-3 border-2 border-primary"
                     src={profilePic}
                     alt="User Pic"
                   />
@@ -247,12 +247,12 @@ const SignUp = () => {
                <GoogleLogIn></GoogleLogIn>
 
               <p className="text-center text-sm  mx-auto mb-2 flex gap-1 mt-2">
-                Don’t have an account yet?{" "}
+                Already have an account?{" "}
                 <Link
                   to="/sign-in"
                   className="text-primary hover:no-underline underline"
                 >
-                  Sign-Up
+                  Sign-In
                 </Link>{" "}
               </p>
           </div>

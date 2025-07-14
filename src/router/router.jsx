@@ -22,11 +22,14 @@ import TrainerDetails from "../pages/TrainerDetails/TrainerDetails";
 import BookedTrainer from "../pages/PaymentPages/BookedTrainer";
 import Payment from "../pages/PaymentPages/Payment";
 import AllNewsletter from "../pages/Dashboard/Admin/AllNewsletter";
+import Loading from "../shared/Loading";
+import PrivateRoute from "../routes/PrivateRoute";
  
 export const router = createBrowserRouter([
     {
         path: '/',
         Component: MainLayouts,
+        hydrateFallbackElement: <Loading></Loading>,
         children: [
             {
                 index: true,
@@ -46,7 +49,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'be-a-trainer',
-                element: <BeATrainer></BeATrainer>
+                element: <PrivateRoute>
+                    <BeATrainer></BeATrainer>
+                </PrivateRoute>
             },
             {
                 path: "trainer-details/:id",
@@ -54,11 +59,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'booked-trainer',
-                element: <BookedTrainer></BookedTrainer>
+                element: <PrivateRoute>
+                    <BookedTrainer></BookedTrainer>
+                </PrivateRoute>
             },
             {
                 path: '/payment',
-                element: <Payment></Payment>
+                element: <PrivateRoute>
+                    <Payment></Payment>
+                </PrivateRoute>
             }
         ]
         
@@ -73,7 +82,9 @@ export const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayouts></DashboardLayouts>,
+        element: <PrivateRoute>
+            <DashboardLayouts></DashboardLayouts>
+        </PrivateRoute>,
         children: [
             {
                 index: true,

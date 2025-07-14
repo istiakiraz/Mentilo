@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxios from "../../hooks/useAxios";
 
 const GoogleLogIn = () => {
 
@@ -22,7 +22,7 @@ const GoogleLogIn = () => {
  const {googleSignIn} = useAuth();
  const location = useLocation();
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure()
+  const axiosInstance = useAxios()
 
     const handleGoogleSignIn = () =>{
         googleSignIn()
@@ -45,7 +45,7 @@ const GoogleLogIn = () => {
 
           
 
-          const userRes = await axiosSecure.post('/users', userInfo)
+          const userRes = await axiosInstance.post('/users', userInfo)
 
           if(userRes.data.insertedId || userRes.data.inserted === false  ){
 
