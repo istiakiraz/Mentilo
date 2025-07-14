@@ -53,7 +53,7 @@ const Navbar = () => {
     <>
       <NavLink
         className={({ isActive }) =>
-          isActive ? " bg-primary px-3     " : " group relative px-3"
+          isActive ? " bg-primary px-3  shadow-[5px_5px_0px_0px_#e5dbf3]    " : " group relative px-3"
         }
         to="/"
       >
@@ -65,7 +65,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? " bg-primary px-3   " : " group relative px-3"
+          isActive ? " bg-primary px-3 shadow-[5px_5px_0px_0px_#e5dbf3]   " : " group relative px-3"
         }
         to="/all-trainer"
       >
@@ -77,7 +77,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? " bg-primary px-3   " : " group relative px-3"
+          isActive ? " bg-primary shadow-[5px_5px_0px_0px_#e5dbf3] px-3   " : " group relative px-3"
         }
         to="/all-classes"
       >
@@ -89,7 +89,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? " bg-primary px-3   " : " group relative px-3"
+          isActive ? " bg-primary px-3 shadow-[5px_5px_0px_0px_#e5dbf3]   " : " group relative px-3"
         }
         to="/forums"
       >
@@ -101,7 +101,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? " bg-primary px-3   " : " group relative px-3"
+          isActive ? " bg-primary px-3 shadow-[5px_5px_0px_0px_#e5dbf3]   " : " group relative px-3"
         }
         to="/be-a-trainer"
       >
@@ -113,7 +113,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? " bg-primary px-3   " : " group relative px-3"
+          isActive ? " bg-primary px-3 shadow-[5px_5px_0px_0px_#e5dbf3]   " : " group relative px-3"
         }
         to="/dashboard"
       >

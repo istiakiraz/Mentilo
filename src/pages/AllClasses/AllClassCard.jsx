@@ -72,3 +72,5 @@ const AllClassCard = ({ classCard }) => {
 };
 
 export default AllClassCard;
+
+
