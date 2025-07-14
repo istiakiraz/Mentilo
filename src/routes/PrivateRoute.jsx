@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router';
 import useAuth from '../hooks/useAuth';
+import Loading from '../shared/Loading';
 
 const PrivateRoute = ({children}) => {
 
@@ -10,12 +11,7 @@ const PrivateRoute = ({children}) => {
      const location = useLocation()
 
     if(loading){
-        return <div className='text-secondary' >
-            <span className="loading loading-bars loading-xl"></span>
-            <span className="loading loading-bars loading-xl"></span>
-            <span className="loading loading-bars loading-xl"></span>
-            <span className="loading loading-bars loading-xl"></span>
-        </div>
+        return <Loading></Loading>
     }
 
     if(!user){

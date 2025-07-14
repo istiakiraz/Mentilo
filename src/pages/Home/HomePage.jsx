@@ -7,10 +7,12 @@ import LatestCommunity from './LatestCommunity/LatestCommunity';
 import FeaturedClasses from './FeaturedClasses/FeaturedClasses';
 
 
+
 const HomePage = () => {
     return (
         <div>
             <Hero></Hero>
+            
             <FeaturedClasses></FeaturedClasses>
             <ReviewSection></ReviewSection>
             <LatestCommunity></LatestCommunity>

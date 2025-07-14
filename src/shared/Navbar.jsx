@@ -5,6 +5,7 @@ import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import useUserInfo from "../hooks/useUserInfo";
 import { FaUserCircle } from "react-icons/fa";
+import Loading from "./Loading";
 
 const Navbar = () => {
   const Toast = Swal.mixin({
@@ -27,12 +28,9 @@ const Navbar = () => {
   };
 
   if (userInfoLoading) {
-    return <p className="h-screen">Loading user info...</p>;
+    return <Loading></Loading>
   }
 
-  // if (user) {
-  //   console.log(userInfo);
-  // }
 
   const handleSignOut = () => {
     signOutUser()
