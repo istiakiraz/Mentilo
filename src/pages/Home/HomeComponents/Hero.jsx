@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <div className="bg-minor lg:py-16 py-10 flex items-center flex-col justify-center">
+    <div className="bg-minor lg:min-py-20 min-py-10 flex items-center flex-col justify-center">
       <motion.h1 
        initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -36,7 +36,7 @@ const Hero = () => {
         src={hero}
         alt="hero"
       />
-      <span className="h-10 w-full z-40 -mt-7 shadow-[4px_-32px_57px_50px_#1f102f]"></span>
+      <span className="h-10 lg:w-full w-72 z-40 mb-4 -mt-7 overflow-x-hidden shadow-[4px_-32px_57px_50px_#1f102f]"></span>
     </div>
   );
 };

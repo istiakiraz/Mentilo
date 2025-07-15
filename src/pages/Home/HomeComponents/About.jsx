@@ -3,9 +3,10 @@ import about from '../../../assets/svg/about.svg'
 
 const About = () => {
     return (
-        <div className='lg:w-8/12 mx-auto my-20 w-11/12 flex items-center flex-col lg:flex-row'>
+        <div className='lg:w-8/12 mx-auto my-30 w-11/12 flex items-center flex-col lg:flex-row'>
               
-            <div className='flex-1'>
+            <div data-aos="fade-up"
+     data-aos-duration="1000" className='flex-1'>
 
                  <h1 className="  text-3xl text-center font-title   uppercase leading-none">
         <span className="relative inline-block font-extrabold text-transparent stroke-text">
@@ -20,7 +21,7 @@ const About = () => {
                 <p className='mt-4 text-gray-500 w-11/12 mx-auto lg:w-full' >We’re more than just workouts — Mentilo is a community that motivates, educates, and supports your health journey. With easy booking, expert guidance, and real progress tracking, you’re always one step closer to becoming your best self.</p>
 
             </div>
-            <img  className='flex-1 lg:w-96' src={about} alt="about photo" />
+            <img data-aos="fade-left"  className='flex-1 lg:w-96' src={about} alt="about photo" />
           
 
         </div>

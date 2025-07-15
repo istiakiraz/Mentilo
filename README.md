@@ -1,12 +1,45 @@
-# React + Vite
+# 🏋️‍♀️ Mentilo – Fitness Trainer Booking Platform  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Mentilo** is a modern fitness platform that allows users to explore fitness classes, book trainers, and manage their training sessions seamlessly. It integrates secure payment processing, trainer management, and user-friendly features to make fitness accessible and engaging.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features  
 
-## Expanding the ESLint configuration
+✅ **User-Friendly Interface** – Built with React, TailwindCSS & Framer Motion  
+✅ **Trainer Booking System** – Browse trainers, book slots, and manage schedules  
+✅ **Secure Payments** – Stripe integration for safe and easy transactions  
+✅ **Class Management** – Explore different classes with difficulty levels & benefits  
+✅ **Review & Rating** – Share feedback and rate trainers  
+✅ **Newsletter & Forums** – Stay updated and engage with the community  
+✅ **Authentication & Authorization** – Firebase for secure login/signup  
+✅ **Admin Dashboard** – Manage users, trainers, and payments  
+✅ **Pagination & Search** – Search classes and browse with pagination  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠 Tech Stack  
+
+### Frontend (Client)  
+- ⚛️ React 19  
+- 🎨 TailwindCSS 4  
+- 🌀 Framer Motion  
+- 🔄 React Query (TanStack)  
+- 🔥 Firebase Auth  
+- 🏞 AOS Animation & Lottie React  
+- 🖼 React Icons & Flowbite UI  
+- 💳 Stripe React SDK  
+- 📊 Recharts for Analytics  
+- 📜 React Hook Form  
+
+### Backend (Server)  
+- 🖥 Node.js + Express 5  
+- 📦 MongoDB  
+- 🔐 Firebase Admin for Token Verification  
+- 🌍 CORS & Dotenv  
+- 💳 Stripe Payments  
+
+### 1️⃣ Clone the Repository  
+
+git clone https://github.com/istiak.iraz/mentilo.git
+cd mentilo

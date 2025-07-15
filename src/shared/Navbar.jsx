@@ -27,9 +27,9 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  if (userInfoLoading) {
-    return <Loading></Loading>
-  }
+  // if (userInfoLoading) {
+  //   return <Loading></Loading>
+  // }
 
 
   const handleSignOut = () => {
@@ -131,19 +131,19 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center space-x-3 rtl:space-x-reverse"
+            className="flex items-center hover:scale-105 duration-300 space-x-3 rtl:space-x-reverse"
           >
             <img className="lg:w-40 w-32" src={logo} alt="Logo" />
           </Link>
 
           {/* Sign In Button */}
           <div className="flex lg:order-2 space-x-3  items-center lg:space-x-0 rtl:space-x-reverse">
-            {user && (
+            {user && !userInfoLoading && (
               <Link to='/dashboard'>
                 {userInfo?.photo ? (
-                  <img className="rounded-full size-12 border-2 cursor-pointer object-cover border-secondary mr-2 " src={userInfo.photo} alt={userInfo?.name} />
+                  <img className="rounded-full size-12 border-2 hover:scale-105 duration-300 cursor-pointer object-cover border-secondary mr-2 " src={userInfo.photo} alt={userInfo?.name} />
                 ) : (
-                  <span className="" >
+                  <span  >
                     <FaUserCircle size={42} color="white" className=" rounded-full border-2   cursor-pointer border-secondary mr-2 " /> 
                   </span>
                 )}
