@@ -24,7 +24,7 @@ const Newsletter = () => {
 
     const email = e.target.email.value;
 
-    console.log(email);
+    // console.log(email);
 
     try {
       const res = await axiosSecure.post("/newsletter", { email });
@@ -55,7 +55,7 @@ const Newsletter = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto my-20 md:w-11/12 lg:w-9/12">
+    <div data-aos="fade-left" className="w-11/12 mx-auto my-20 md:w-11/12 lg:w-9/12">
       <div className="grid md:grid-cols-3 items-center bg-primary rounded-2xl px-6 md:px-0 md:pl-8 lg:pl-16 w-full ">
         <div className="md:col-span-2 flex flex-col md:py-0 py-8 space-y-5 ">
           <p className="bg-minor w-fit text-secondary text-sm px-4 py-1 rounded ">

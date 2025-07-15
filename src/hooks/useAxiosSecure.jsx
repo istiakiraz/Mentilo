@@ -30,7 +30,7 @@ const useAxiosSecure = () => {
     const responseInterceptor = axiosSecure.interceptors.response.use(
       (res) => res,
       (error) => {
-        console.log('interceptors', error?.response?.status);
+        // console.log('interceptors', error?.response?.status);
         const status = error?.response?.status;
 
         if (status === 403) {

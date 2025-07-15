@@ -32,7 +32,7 @@ const AppliedTrainer = () => {
         Swal.fire("Approved", "Trainer has been approved.", "success");
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
     }
   };
 
@@ -62,7 +62,7 @@ const AppliedTrainer = () => {
           Swal.fire("Rejected", "Trainer has been rejected.", "success");
         }
       } catch (err) {
-        console.error(err);
+        // console.error(err);
         Swal.fire("Error", "Something went wrong.", "error");
       }
     }

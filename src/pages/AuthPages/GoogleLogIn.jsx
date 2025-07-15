@@ -6,89 +6,80 @@ import Swal from "sweetalert2";
 import useAxios from "../../hooks/useAxios";
 
 const GoogleLogIn = () => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
 
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-      },
-    });
-
- const {googleSignIn} = useAuth();
- const location = useLocation();
+  const { googleSignIn } = useAuth();
+  const location = useLocation();
   const navigate = useNavigate();
-  const axiosInstance = useAxios()
+  const axiosInstance = useAxios();
 
-    const handleGoogleSignIn = () =>{
-        googleSignIn()
-        .then(async (result) =>{
-           const user =  result.user
-           console.log(user);
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(async (result) => {
+        const user = result.user;
+        // console.log(user);
 
+        //update user profile in database
 
-          //update user profile in database 
+        const userInfo = {
+          name: user.displayName,
+          photo: user.photoURL,
+          email: user.email,
+          role: "member", // default role
+          created_at: new Date().toISOString(),
+          last_log_at: new Date().toISOString(),
+        };
 
-          const userInfo = {
+        const userRes = await axiosInstance.post("/users", userInfo);
 
-            name : user.displayName,
-            photo : user.photoURL,
-            email: user.email,
-            role: 'member', // default role
-          created_at : new Date().toISOString(),
-          last_log_at : new Date().toISOString()
-          }
+        if (userRes.data.insertedId || userRes.data.inserted === false) {
+          navigate(`${location.state ? location.state : "/"}`);
 
-          
-
-          const userRes = await axiosInstance.post('/users', userInfo)
-
-          if(userRes.data.insertedId || userRes.data.inserted === false  ){
-
-             navigate(`${location.state ? location.state : "/"}`);
-
-                     Swal.fire({
-                      title: `🏃‍♂️ Time to Move with Mentilo!`,
-                      text: "Let’s crush today’s goals!.",
-                      icon: "success",
-                      confirmButtonText: "Get Started",
-                      iconColor: "#432365",
-                      confirmButtonColor: "#432365",
-                      background: "#f9f6fc",
-                    });
-
-
-          }
-
-
-
-        }).catch(error =>{
-            console.log(error);
-               Toast.fire({
+          Swal.fire({
+            title: `🏃‍♂️ Time to Move with Mentilo!`,
+            text: "Let’s crush today’s goals!.",
+            icon: "success",
+            confirmButtonText: "Get Started",
+            iconColor: "#432365",
+            confirmButtonColor: "#432365",
+            background: "#f9f6fc",
+          });
+        }
+      })
+      .catch((error) => {
+        // console.log(error);
+        Toast.fire({
           icon: "error",
-           background: "#f9f6fc",
+          background: "#f9f6fc",
           iconColor: "#432365",
           title: error,
-          });
-        })
-    }
-
+        });
+      });
+  };
 
   return (
-    <div className="text-center w-full" >
-      <p className="my-2" >Or</p>
+    <div className="text-center w-full">
+      <p className="my-2">Or</p>
 
-      <button onClick={handleGoogleSignIn}  className=" bg-secondary cursor-pointer hover:bg-primary/10 duration-300 rounded py-3 w-full " >
+      <button
+        onClick={handleGoogleSignIn}
+        className=" bg-secondary cursor-pointer hover:bg-primary/10 duration-300 rounded py-3 w-full "
+      >
         <div className="flex items-center  gap-2 w-6/12 mx-auto">
-             <FcGoogle size={20} /> <span className="font-semibold">Login With Google</span>
+          <FcGoogle size={20} />{" "}
+          <span className="font-semibold">Login With Google</span>
         </div>
       </button>
-
-    
     </div>
   );
 };

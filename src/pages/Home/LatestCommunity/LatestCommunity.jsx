@@ -36,7 +36,8 @@ const LatestCommunity = () => {
         {" "}
         Community Posts
       </h2>
-             <div className="grid lg:grid-cols-3 my-8 lg:w-10/12 mx-auto md:grid-cols-2 grid-cols-1 gap-6">
+             <div data-aos="fade-up"
+     data-aos-anchor-placement="top-bottom" className="grid lg:grid-cols-3 my-8 lg:w-10/12 mx-auto md:grid-cols-2 grid-cols-1 gap-6">
         {forums.map((forum) => (
           <CommunityCard forum={forum} key={forum._id} />
         ))}

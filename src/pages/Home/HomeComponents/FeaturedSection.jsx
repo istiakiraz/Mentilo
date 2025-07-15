@@ -8,7 +8,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 const features = [
   {
     icon: <MdOutlineFitnessCenter size={40} />,
-    title: "Diverse Fitness Classes",
+    title: "Fitness Classes",
     desc: "Explore a variety of fitness programs designed for every level, from yoga to high-intensity training.",
   },
   {
@@ -40,7 +40,7 @@ const features = [
 
 const FeaturedSection = () => {
   return (
-    <div className="lg:w-10/12 w-full mx-auto lg:mt-40 mt-20 lg:mb-10">
+    <div className="lg:w-10/12 w-full mx-auto lg:mt-40 md:mt-30 mt-20 lg:mb-10">
 
 
         
@@ -57,13 +57,13 @@ const FeaturedSection = () => {
       </div>
 
       <Marquee pauseOnHover speed={40} gradient={true}>
-        <div className="flex gap-2 lg:gap-6 px-2 lg:px-4">
+        <div className="flex gap-2 md:gap-4 lg:gap-6 px-2 lg:px-4">
           {features.map((feature, index) => (
             <div
               key={index}
               className="
                 relative overflow-hidden
-                bg-secondary 
+                bg-secondary/70 
                 text-primary
                  rounded-xl shadow-lg 
                 flex flex-col items-center text-center 
@@ -84,7 +84,7 @@ const FeaturedSection = () => {
               "></div>
 
               <div className="relative my-auto z-10">
-                <div className="lg:mb-4 mb-2 w-fit text-center mx-auto ">{feature.icon}</div>
+                <div className="lg:mb-4 mb-2 w-fit text-center  mx-auto ">{feature.icon}</div>
                 <h3 className="font-bold font-title text-[14px] lg:text-xl">{feature.title}</h3>
                 <p className="lg:text-[12px] text-[10px] mt-2  lg:mt-3">{feature.desc}</p>
               </div>

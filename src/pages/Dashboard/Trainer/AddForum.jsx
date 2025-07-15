@@ -13,10 +13,6 @@ const {userInfo} = useUserInfo()
 const axiosSecure = useAxiosSecure()
 
   const onSubmit = async (data) => {
-    // const formData = new FormData();
-    // formData.append("title", data.title);
-    // formData.append("content", data.content);
-    // formData.append("photo", data.photo[0]);
 
     const forumData = {
         ...data,

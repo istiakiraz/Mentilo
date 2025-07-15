@@ -45,7 +45,7 @@ const AllTrainers = () => {
           Swal.fire("Rejected", "Trainer has been rejected.", "success");
         }
       } catch (err) {
-        console.error(err);
+        // console.error(err);
         Swal.fire("Error", "Something went wrong.", "error");
       }
     }

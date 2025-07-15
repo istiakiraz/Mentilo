@@ -92,7 +92,7 @@ const AddClass = () => {
       })),
     };
 
-    console.log(classData);
+    // console.log(classData);
 
     try {
       const res = await axiosSecure.post("/classes", classData);
@@ -105,7 +105,7 @@ const AddClass = () => {
         // setSelectedTrainers([]);
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       Swal.fire("Error", "Something went wrong", "error");
     }
   };

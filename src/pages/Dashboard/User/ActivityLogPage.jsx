@@ -58,7 +58,7 @@ const ActivityLogPage = () => {
       if (result.isConfirmed) {
         try {
           const res = await axiosSecure.delete(`/trainers/${id}`);
-          console.log();
+          // console.log();
           if (res.data.message === "Deleted successfully") {
              
             refetch();
@@ -69,7 +69,7 @@ const ActivityLogPage = () => {
             );
           }
         } catch (err) {
-          console.error(err);
+          // console.error(err);
           Swal.fire("Error", "Something went wrong.", "error");
         }
       }

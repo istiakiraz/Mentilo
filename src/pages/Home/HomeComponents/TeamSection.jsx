@@ -32,9 +32,9 @@ const TeamSection = () => {
         {" "}
         Fitness Champions{" "}
       </h2>
-      <div className="grid grid-cols-2 my-6 ">
+      <div   className="grid grid-cols-2 my-6 ">
         {trainers?.map((trainer, index) => (
-          <div
+          <div data-aos="zoom-in"
             key={trainer._id}
             className={`p-6  ${index === 0 ? "  col-span-2" : ""}`}
           >

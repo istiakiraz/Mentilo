@@ -52,7 +52,7 @@ const BookedTrainerPage = () => {
       createdAt: new Date(),
     };
 
-    console.log(reviewData);
+    // console.log(reviewData);
 
     try {
       const res = await axiosSecure.post("/reviews", reviewData);
@@ -61,7 +61,7 @@ const BookedTrainerPage = () => {
         closeModal();
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       Swal.fire("Error", "Failed to submit review", "error");
     }
   };

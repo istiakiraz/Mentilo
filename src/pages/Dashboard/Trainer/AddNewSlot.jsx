@@ -28,7 +28,7 @@ const AddNewSlot = () => {
   },
 });
 
-console.log(myClasses);
+// console.log(myClasses);
 
   const {
     register,
@@ -47,7 +47,7 @@ console.log(myClasses);
       availableDays: data.availableDays, // array
     };
 
-    console.log(slotData);
+    // console.log(slotData);
 
     try {
       const res = await axiosSecure.post("/slots", slotData);
@@ -56,7 +56,7 @@ console.log(myClasses);
         reset();
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       Swal.fire("Error", "Something went wrong", "error");
     }
   };
@@ -88,7 +88,7 @@ console.log(myClasses);
             Swal.fire("Error", "No changes were made.", "error");
           }
         } catch (error) {
-          console.error("Error removing trainer:", error);
+          // console.error("Error removing trainer:", error);
           Swal.fire("Error", "Something went wrong.", "error");
         }
       }

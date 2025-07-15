@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 const AllTrainerCard = ({trainer}) => {
 
-    console.log(trainer);
+    // console.log(trainer);
 
     return (
         <div className='bg-secondary shadow-[5px_5px_0px_0px_#432365]  pb-6 rounded-2xl '>

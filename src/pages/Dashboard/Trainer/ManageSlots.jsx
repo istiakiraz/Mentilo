@@ -38,7 +38,7 @@ const ManageSlots = () => {
             Swal.fire("Deleted!", "Slot has been deleted.", "success");
           }
         } catch (error) {
-          console.error("Delete error:", error);
+          // console.error("Delete error:", error);
           Swal.fire("Error", "Something went wrong", "error");
         }
       }

@@ -10,10 +10,23 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import useAxios from "../../hooks/useAxios";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+
   const [showPass, setShowPass] = useState(false);
-  const axiosInstance = useAxios()
+  const axiosInstance = useAxios();
 
   const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
@@ -26,11 +39,11 @@ const SignUp = () => {
 
   const [profilePic, setProfilePic] = useState("");
 
-   const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (data) => {
+    // console.log(data);
 
     createUser(data.email, data.password)
-      .then(async(result) => {
+      .then(async (result) => {
         console.log(result.user);
 
         //update user profile in database
@@ -39,32 +52,43 @@ const SignUp = () => {
           email: data.email,
           name: data.name,
           photo: profilePic,
-          role: 'member', // default role
-          created_at : new Date().toISOString(),
-          last_log_at : new Date().toISOString()
-        }
+          role: "member", // default role
+          created_at: new Date().toISOString(),
+          last_log_at: new Date().toISOString(),
+        };
 
-
-        const userRes = await axiosInstance.post('/users', userInfo)
-
+        const userRes = await axiosInstance.post("/users", userInfo);
 
         // console.log(userRes.data);
-        if(userRes.data.insertedId){
+        if (userRes.data.insertedId) {
           // update user profile in firebase
-        const userProfile = {
-          displayName: data.name,
-          photoURL: profilePic,
-        };
-        updateUserProfile(userProfile)
-          .then(() => {
-            navigate('/')
-            console.log("profile name pic updated");
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        };
-   
+          const userProfile = {
+            displayName: data.name,
+            photoURL: profilePic,
+          };
+          updateUserProfile(userProfile)
+            .then(() => {
+              navigate("/");
+
+              Swal.fire({
+                title: `Time to Move with Mentilo!`,
+                text: "Let’s crush today’s goals!.",
+                icon: "success",
+                confirmButtonText: "Get Started",
+                iconColor: "#432365",
+                confirmButtonColor: "#432365",
+                background: "#f9f6fc",
+              });
+            })
+            .catch((error) => {
+              Toast.fire({
+                icon: "error",
+                background: "#f9f6fc",
+                iconColor: "#432365",
+                title: error,
+              });
+            });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -85,7 +109,7 @@ const SignUp = () => {
     const res = await axios.post(imgURL, formData);
 
     setProfilePic(res.data.data.url);
-    console.log(res.data.data.url);
+    // console.log(res.data.data.url);
   };
 
   return (
@@ -194,8 +218,7 @@ const SignUp = () => {
                     minLength: 6,
                     pattern: {
                       value: /^(?=.*[A-Z])(?=.*\d).{6,}$/,
-                      message:
-                        "Password must include 1 uppercase and 1 number",
+                      message: "Password must include 1 uppercase and 1 number",
                     },
                   })}
                   className="pl-10 flex-grow w-full h-12 px-4 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
@@ -242,19 +265,18 @@ const SignUp = () => {
                   Sign Up
                 </button>
               </div>
-
             </form>
-               <GoogleLogIn></GoogleLogIn>
+            <GoogleLogIn></GoogleLogIn>
 
-              <p className="text-center text-sm  mx-auto mb-2 flex gap-1 mt-2">
-                Already have an account?{" "}
-                <Link
-                  to="/sign-in"
-                  className="text-primary hover:no-underline underline"
-                >
-                  Sign-In
-                </Link>{" "}
-              </p>
+            <p className="text-center text-sm  mx-auto mb-2 flex gap-1 mt-2">
+              Already have an account?{" "}
+              <Link
+                to="/sign-in"
+                className="text-primary hover:no-underline underline"
+              >
+                Sign-In
+              </Link>{" "}
+            </p>
           </div>
         </div>
       </div>

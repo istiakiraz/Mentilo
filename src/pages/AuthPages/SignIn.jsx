@@ -58,7 +58,7 @@ const SignIn = () => {
           navigate(`${location.state ? location.state : "/"}`);
 
           Swal.fire({
-            title: `🏃‍♂️ Time to Move with Mentilo!`,
+            title: `Time to Move with Mentilo!`,
             text: "Let’s crush today’s goals!.",
             icon: "success",
             confirmButtonText: "Get Started",
