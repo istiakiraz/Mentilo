@@ -42,7 +42,13 @@ const AllTrainers = () => {
         });
         if (res.data.modifiedCount > 0) {
           refetch();
-          Swal.fire("Rejected", "Trainer has been rejected.", "success");
+           Swal.fire({
+                    icon: "success",
+                    title: "Trainer has been rejected.",
+                    iconColor: "#432365",
+                    confirmButtonColor: "#432365",
+                    background: "#f9f6fc",
+                  });
         }
       } catch (err) {
         // console.error(err);

@@ -52,7 +52,13 @@ const AddNewSlot = () => {
     try {
       const res = await axiosSecure.post("/slots", slotData);
       if (res.data.insertedId) {
-        Swal.fire("Success", "Slot added successfully!", "success");
+         Swal.fire({
+          icon: "success",
+          title: "Slot added successfully!",
+          iconColor: "#432365",
+          confirmButtonColor: "#432365",
+          background: "#f9f6fc",
+        });
         reset();
       }
     } catch (error) {
@@ -82,7 +88,14 @@ const AddNewSlot = () => {
             { email: user?.email }
           );
           if (res.data.modifiedCount > 0) {
-            Swal.fire("Removed!", "You have been removed from this class.", "success");
+             Swal.fire({
+          icon: "success",
+          title: "You have been removed from this class.",
+          iconColor: "#432365",
+          confirmButtonColor: "#432365",
+          background: "#f9f6fc",
+        });
+           
             refetch();
           } else {
             Swal.fire("Error", "No changes were made.", "error");

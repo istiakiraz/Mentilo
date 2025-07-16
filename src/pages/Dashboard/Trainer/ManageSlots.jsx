@@ -35,7 +35,14 @@ const ManageSlots = () => {
           const res = await axiosSecure.delete(`/slots/${id}`);
           if (res.data.deletedCount > 0) {
             refetch();
-            Swal.fire("Deleted!", "Slot has been deleted.", "success");
+             Swal.fire({
+          icon: "success",
+          title: "Slot has been deleted.",
+          iconColor: "#432365",
+          confirmButtonColor: "#432365",
+          background: "#f9f6fc",
+        });
+        
           }
         } catch (error) {
           // console.error("Delete error:", error);

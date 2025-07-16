@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import trainerPic from "../../assets/svg/PersonalTrainer-cuate.svg";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const daysOptions = [
   { value: "Sun", label: "Sunday" },
@@ -24,6 +25,8 @@ const slotOptions = [
   "Night (7 PM - 10 PM)",
 ];
 
+
+
 const BeATrainer = () => {
   const Toast = Swal.mixin({
     toast: true,
@@ -40,6 +43,7 @@ const BeATrainer = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [profilePic, setProfilePic] = useState("");
+  const navigate = useNavigate()
 
   const [selectedDays, setSelectedDays] = React.useState([]);
   const [selectedSkills, setSelectedSkills] = React.useState([]);
@@ -93,6 +97,7 @@ const BeATrainer = () => {
           background: "#f9f6fc",
           iconColor: "#432365",
         });
+        
       }
       if (res.data.insertedId) {
         Swal.fire({
@@ -103,6 +108,7 @@ const BeATrainer = () => {
           confirmButtonColor: "#432365",
           background: "#f9f6fc",
         });
+        navigate('/dashboard/activity-log')
         // reset();
         setSelectedDays([]);
         setSelectedSkills([]);

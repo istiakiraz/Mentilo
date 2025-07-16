@@ -36,7 +36,14 @@ const ProfilePage = () => {
       });
 
       if (res.data.modifiedCount > 0) {
-        Swal.fire("Updated!", "Profile updated successfully.", "success");
+         Swal.fire({
+          icon: "success",
+          title: "Updated!",
+           text: "Profile updated successfully.",
+          iconColor: "#432365",
+          confirmButtonColor: "#432365",
+          background: "#f9f6fc",
+        });
         refetch();
       } else {
         Swal.fire("No Change", "Nothing was updated.", "info");

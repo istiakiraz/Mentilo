@@ -48,7 +48,7 @@ const TrainerDetails = () => {
       <div className="border-b-2 flex flex-col items-center justify-between lg:flex-row  border-primary/50 lg:py-10 border-dashed">
         <div className="flex flex-col lg:flex-row items-center gap-8">
           <img
-            className="rounded-2xl border-2 shadow-[-8px_-7px_0px_0px_#432365] object-cover border-primary"
+            className="rounded-2xl lg:w-[500px] border-2 shadow-[-8px_-7px_0px_0px_#432365] object-cover border-primary"
             src={trainer.photo}
             alt={trainer.name}
           />

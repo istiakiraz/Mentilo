@@ -29,7 +29,13 @@ const AppliedTrainer = () => {
         });
       if (res.data.modifiedCount > 0) {
         refetch();
-        Swal.fire("Approved", "Trainer has been approved.", "success");
+        Swal.fire({
+          icon: "success",
+          title: "Trainer has been approved.",
+          iconColor: "#432365",
+          confirmButtonColor: "#432365",
+          background: "#f9f6fc",
+        });
       }
     } catch (err) {
       // console.error(err);
@@ -59,7 +65,13 @@ const AppliedTrainer = () => {
         });
         if (res.data.modifiedCount > 0) {
           refetch();
-          Swal.fire("Rejected", "Trainer has been rejected.", "success");
+           Swal.fire({
+          icon: "success",
+          title: "Trainer has been rejected.",
+          iconColor: "#432365",
+          confirmButtonColor: "#432365",
+          background: "#f9f6fc",
+        });
         }
       } catch (err) {
         // console.error(err);
