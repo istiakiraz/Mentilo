@@ -339,7 +339,7 @@ const BeATrainer = () => {
             <input
               {...register("facebook", { required: true })}
               type="url"
-              value={"https://www.facebook.com/istiak.iraz"}
+             
               className="w-full px-4 py-2 border rounded-md focus:outline-none  focus:ring-primary"
               placeholder="https://facebook.com/yourprofile"
             />
@@ -358,7 +358,7 @@ const BeATrainer = () => {
             <input
               {...register("instagram", { required: true })}
               type="url"
-              value={"https://www.instagram.com/iraz_mahmud/"}
+  
               className="w-full px-4 py-2 border rounded-md focus:outline-none  focus:ring-primary"
               placeholder="https://instagram.com/yourprofile"
             />

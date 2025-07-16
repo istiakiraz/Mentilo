@@ -57,7 +57,13 @@ const BookedTrainerPage = () => {
     try {
       const res = await axiosSecure.post("/reviews", reviewData);
       if (res.data.insertedId) {
-        Swal.fire("Success", "Review submitted!", "success");
+        Swal.fire({
+                  icon: "success",
+                  title: "Review submitted!",
+                  iconColor: "#432365",
+                  confirmButtonColor: "#432365",
+                  background: "#f9f6fc",
+                });
         closeModal();
       }
     } catch (error) {
