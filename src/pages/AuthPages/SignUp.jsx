@@ -281,7 +281,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      <div className=" bg-secondary hidden lg:block h-screen relative">
+      <div className=" bg-secondary place-content-center place-items-center hidden lg:block h-screen relative">
         <img
           className="2xl:w-[600px] lg:w-[450px]  relative  z-20 py-40 mx-40"
           src={logoGIF}
