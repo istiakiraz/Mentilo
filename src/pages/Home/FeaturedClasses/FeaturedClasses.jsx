@@ -24,7 +24,7 @@ const FeaturedClasses = () => {
   }
 
   return (
-    <div className="w-11/12 mx-auto lg:w-10/12 my-20" >
+    <div className="w-11/12 mx-auto  my-20" >
 
         <h1 className=" lg:text-5xl text-3xl text-center font-title   uppercase leading-none">
         <span className="relative inline-block font-extrabold text-transparent stroke-text">
@@ -37,7 +37,7 @@ const FeaturedClasses = () => {
       </h2>
 
       <div data-aos="fade-up"
-     data-aos-anchor-placement="top-bottom" className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-8 lg:w-10/12 mx-auto">
+     data-aos-anchor-placement="top-bottom" className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-8 2xl:w-10/12 mx-auto">
         {classes?.map((classCard) => (
           <FeaturedClassCard key={classCard._id} classCard={classCard} />
         ))}
