@@ -83,7 +83,7 @@ const SignIn = () => {
     <div className="grid grid-cols-1 bg-primary lg:bg-white h-screen lg:grid-cols-2 py-16 max-h-screen justify-center items-center  lg:pt-0  lg:pb-0">
       <div className=" bg-primary  hidden lg:block h-screen relative">
         <img
-          className="w-[600px] relative  z-20 py-40 mx-40"
+          className="2xl:w-[600px] w-[450px] relative  z-20 py-40 mx-40"
           src={logoGIF}
           alt="logo gif"
         />
@@ -106,7 +106,7 @@ const SignIn = () => {
           </Link>
         </div>
 
-        <div className="  lg:w-7/12 mx-auto ">
+        <div className="  2xl:w-7/12 lg:w-9/12 mx-auto ">
           <div className="lg:flex justify-center mb-8 hidden  items-end">
             <img className="w-16" src={logo} alt="logo" />
             <h2 className="text-4xl font-logo -ml-3 text-primary ">Mentilo</h2>

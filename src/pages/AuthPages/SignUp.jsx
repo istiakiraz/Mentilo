@@ -131,7 +131,7 @@ const SignUp = () => {
           </Link>
         </div>
 
-        <div className="  lg:w-8/12 mx-auto ">
+        <div className=" lg:w-11/12 2xl:w-8/12 mx-auto ">
           <div className="flex justify-center mb-2   items-end">
             <img className="w-16" src={logo} alt="" />
             <h2 className="text-4xl font-logo -ml-3 text-primary ">Mentilo</h2>
@@ -283,9 +283,9 @@ const SignUp = () => {
 
       <div className=" bg-secondary hidden lg:block h-screen relative">
         <img
-          className="w-[600px] relative  z-20 py-40 mx-40"
+          className="2xl:w-[600px] lg:w-[450px]  relative  z-20 py-40 mx-40"
           src={logoGIF}
-          alt=""
+          alt="logo_gif"
         />
       </div>
     </div>

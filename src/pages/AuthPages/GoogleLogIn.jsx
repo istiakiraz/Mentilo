@@ -75,9 +75,9 @@ const GoogleLogIn = () => {
         onClick={handleGoogleSignIn}
         className=" bg-secondary cursor-pointer hover:bg-primary/10 text-center flex justify-center items-center duration-300 rounded py-3 w-full "
       >
-        <div className="flex items-center gap-2 w-6/12 ">
+        <div className="flex items-center place-content-center gap-2 w-6/12 ">
           <FcGoogle size={20} />{" "}
-          <span className="font-semibold">Login With Google</span>
+          <span className="font-semibold ">Login With Google</span>
         </div>
       </button>
     </div>
