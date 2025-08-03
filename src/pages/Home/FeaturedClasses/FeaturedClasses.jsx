@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router";
 import FeaturedClassCard from "./FeaturedClassCard";
+import ClassCardSkeleton from "../../AllClasses/Loading/ClassCardSkeleton";
 
 const FeaturedClasses = () => {
   const axiosSecure = useAxiosSecure();
@@ -17,9 +18,23 @@ const FeaturedClasses = () => {
 
   if (isLoading) {
     return (
-      <div className="text-center text-primary min-h-screen text-xl py-10">
-        Loading...
-      </div>
+      <>
+       <h1 className=" lg:text-5xl text-3xl text-center font-title   uppercase leading-none">
+        <span className="relative inline-block font-extrabold text-transparent stroke-text">
+          Featured
+        </span>
+      </h1>
+      <h2 className=" font-black text-primary text-5xl  lg:text-7xl font-title text-center uppercase leading-none">
+        {" "}
+        Classes
+      </h2>
+
+        <div className="flex flex-wrap 2xl:w-10/12 mx-auto mt-10 justify-center gap-6 p-4">
+      {[...Array(6)].map((_, index) => (
+        <ClassCardSkeleton key={index} />
+      ))}
+    </div>
+      </>
     );
   }
 

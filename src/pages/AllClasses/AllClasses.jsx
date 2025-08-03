@@ -57,6 +57,7 @@ import React, { useState, useEffect } from "react"; // ✅ 1. Import useEffect
 import { useQuery } from "@tanstack/react-query";
 import AllClassCard from "./AllClassCard";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import ClassCardSkeleton from "./Loading/ClassCardSkeleton";
 
 const AllClasses = () => {
   const axiosSecure = useAxiosSecure();
@@ -93,14 +94,21 @@ const AllClasses = () => {
 
   if (isLoading && !data.classes) {
     return (
-      <div className="text-center min-h-screen text-primary py-10 text-xl">
-        Loading... 
-      </div>
+       <>
+       <h1 className="text-center mt-10 lg:text-5xl text-3xl font-title font-bold text-primary">
+       All Classes{" "}
+      </h1>
+       <div className="flex flex-wrap 2xl:w-10/12 mx-auto my-10 justify-center gap-6 p-4">
+      {[...Array(6)].map((_, index) => (
+        <ClassCardSkeleton key={index} />
+      ))}
+    </div>
+       </>
     );
   }
 
   return (
-    <div className="lg:w-10/12 mx-auto min-h-screen w-11/12 py-10">
+    <div className="2xl:w-10/12 mx-auto min-h-screen w-11/12 py-10">
      {" "}
       <h1 className="text-center lg:text-5xl text-3xl font-title font-bold text-primary">
        All Classes{" "}
@@ -118,7 +126,7 @@ const AllClasses = () => {
         {" "}
       </div>
       
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-8 lg:w-10/12 mx-auto">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-8 2xl:w-10/12 mx-auto">
       
         {data.classes?.map((classCard) => (
           <AllClassCard key={classCard._id} classCard={classCard} />

@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import CommunityCard from './CommunityCard';
 import { Link } from 'react-router';
+import ForumCardSkeleton from '../../Forums/LaodingCard/ForumCardSkeleton';
 
 const LatestCommunity = () => {
 
@@ -18,9 +19,22 @@ const LatestCommunity = () => {
 
   if (isLoading) {
     return (
-      <div className="text-center text-primary min-h-screen text-xl py-10">
-        Loading...
-      </div>
+      <>
+      <h1 className=" lg:text-5xl text-3xl text-center font-title   uppercase leading-none">
+        <span className="relative inline-block font-extrabold text-transparent stroke-text">
+          Latest 
+        </span>
+      </h1>
+      <h2 className=" font-black text-primary text-5xl  lg:text-7xl font-title text-center uppercase leading-none">
+        {" "}
+        Community Posts
+      </h2>
+       <div className="flex flex-wrap 2xl:w-9/12 lg:w-11/12 mx-auto my-10 justify-center gap-6">
+      {[...Array(6)].map((_, index) => (
+        <ForumCardSkeleton key={index} />
+      ))}
+    </div>
+      </>
     );
   }
 

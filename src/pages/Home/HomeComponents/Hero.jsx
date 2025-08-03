@@ -26,7 +26,7 @@ const Hero = () => {
           ease: "easeOut",
           delay: 0.1
         }}
-        className=" text-white font-extrabold z-10 text-7xl md:text-[140px]   lg:text-[270px] font-title text-center  lg:leading-1.5"
+        className=" text-white font-extrabold z-10 text-7xl md:text-[140px] lg:text-[200px]  2xl:text-[270px] font-title text-center  lg:leading-1.5"
       >
         {" "}
         your fitness
