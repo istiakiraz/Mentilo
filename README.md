@@ -2,6 +2,10 @@
 
 **Mentilo** is a modern fitness platform that allows users to explore fitness classes, book trainers, and manage their training sessions seamlessly. It integrates secure payment processing, trainer management, and user-friendly features to make fitness accessible and engaging.  
 
+Admin credentials :
+Email : admin@gmail.com
+Pass  : Admin123
+
 ---
 
 ## 🚀 Features  
